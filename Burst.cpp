@@ -3,3 +3,12 @@
 //
 
 #include "Burst.h"
+
+
+int Burst::get_cpu_time() {
+    return cpu_time;
+}
+
+int Burst::get_io_time() {
+    return io_time;
+}

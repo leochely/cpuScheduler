@@ -122,59 +122,113 @@ cpuScheduller/fast:
 	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/build
 .PHONY : cpuScheduller/fast
 
-burst.obj: burst.cpp.obj
+Burst.obj: Burst.cpp.obj
 
-.PHONY : burst.obj
-
-# target to build an object file
-burst.cpp.obj:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/burst.cpp.obj
-.PHONY : burst.cpp.obj
-
-burst.i: burst.cpp.i
-
-.PHONY : burst.i
-
-# target to preprocess a source file
-burst.cpp.i:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/burst.cpp.i
-.PHONY : burst.cpp.i
-
-burst.s: burst.cpp.s
-
-.PHONY : burst.s
-
-# target to generate assembly for a file
-burst.cpp.s:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/burst.cpp.s
-.PHONY : burst.cpp.s
-
-event.obj: event.cpp.obj
-
-.PHONY : event.obj
+.PHONY : Burst.obj
 
 # target to build an object file
-event.cpp.obj:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/event.cpp.obj
-.PHONY : event.cpp.obj
+Burst.cpp.obj:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Burst.cpp.obj
+.PHONY : Burst.cpp.obj
 
-event.i: event.cpp.i
+Burst.i: Burst.cpp.i
 
-.PHONY : event.i
+.PHONY : Burst.i
 
 # target to preprocess a source file
-event.cpp.i:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/event.cpp.i
-.PHONY : event.cpp.i
+Burst.cpp.i:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Burst.cpp.i
+.PHONY : Burst.cpp.i
 
-event.s: event.cpp.s
+Burst.s: Burst.cpp.s
 
-.PHONY : event.s
+.PHONY : Burst.s
 
 # target to generate assembly for a file
-event.cpp.s:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/event.cpp.s
-.PHONY : event.cpp.s
+Burst.cpp.s:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Burst.cpp.s
+.PHONY : Burst.cpp.s
+
+Event.obj: Event.cpp.obj
+
+.PHONY : Event.obj
+
+# target to build an object file
+Event.cpp.obj:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Event.cpp.obj
+.PHONY : Event.cpp.obj
+
+Event.i: Event.cpp.i
+
+.PHONY : Event.i
+
+# target to preprocess a source file
+Event.cpp.i:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Event.cpp.i
+.PHONY : Event.cpp.i
+
+Event.s: Event.cpp.s
+
+.PHONY : Event.s
+
+# target to generate assembly for a file
+Event.cpp.s:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Event.cpp.s
+.PHONY : Event.cpp.s
+
+Process.obj: Process.cpp.obj
+
+.PHONY : Process.obj
+
+# target to build an object file
+Process.cpp.obj:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Process.cpp.obj
+.PHONY : Process.cpp.obj
+
+Process.i: Process.cpp.i
+
+.PHONY : Process.i
+
+# target to preprocess a source file
+Process.cpp.i:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Process.cpp.i
+.PHONY : Process.cpp.i
+
+Process.s: Process.cpp.s
+
+.PHONY : Process.s
+
+# target to generate assembly for a file
+Process.cpp.s:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Process.cpp.s
+.PHONY : Process.cpp.s
+
+Thread.obj: Thread.cpp.obj
+
+.PHONY : Thread.obj
+
+# target to build an object file
+Thread.cpp.obj:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Thread.cpp.obj
+.PHONY : Thread.cpp.obj
+
+Thread.i: Thread.cpp.i
+
+.PHONY : Thread.i
+
+# target to preprocess a source file
+Thread.cpp.i:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Thread.cpp.i
+.PHONY : Thread.cpp.i
+
+Thread.s: Thread.cpp.s
+
+.PHONY : Thread.s
+
+# target to generate assembly for a file
+Thread.cpp.s:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Thread.cpp.s
+.PHONY : Thread.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -203,60 +257,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-process.obj: process.cpp.obj
-
-.PHONY : process.obj
-
-# target to build an object file
-process.cpp.obj:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/process.cpp.obj
-.PHONY : process.cpp.obj
-
-process.i: process.cpp.i
-
-.PHONY : process.i
-
-# target to preprocess a source file
-process.cpp.i:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/process.cpp.i
-.PHONY : process.cpp.i
-
-process.s: process.cpp.s
-
-.PHONY : process.s
-
-# target to generate assembly for a file
-process.cpp.s:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/process.cpp.s
-.PHONY : process.cpp.s
-
-thread.obj: thread.cpp.obj
-
-.PHONY : thread.obj
-
-# target to build an object file
-thread.cpp.obj:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/thread.cpp.obj
-.PHONY : thread.cpp.obj
-
-thread.i: thread.cpp.i
-
-.PHONY : thread.i
-
-# target to preprocess a source file
-thread.cpp.i:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/thread.cpp.i
-.PHONY : thread.cpp.i
-
-thread.s: thread.cpp.s
-
-.PHONY : thread.s
-
-# target to generate assembly for a file
-thread.cpp.s:
-	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/thread.cpp.s
-.PHONY : thread.cpp.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -266,21 +266,21 @@ help:
 	@echo ... edit_cache
 	@echo ... cpuScheduller
 	@echo ... rebuild_cache
-	@echo ... burst.obj
-	@echo ... burst.i
-	@echo ... burst.s
-	@echo ... event.obj
-	@echo ... event.i
-	@echo ... event.s
+	@echo ... Burst.obj
+	@echo ... Burst.i
+	@echo ... Burst.s
+	@echo ... Event.obj
+	@echo ... Event.i
+	@echo ... Event.s
+	@echo ... Process.obj
+	@echo ... Process.i
+	@echo ... Process.s
+	@echo ... Thread.obj
+	@echo ... Thread.i
+	@echo ... Thread.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... process.obj
-	@echo ... process.i
-	@echo ... process.s
-	@echo ... thread.obj
-	@echo ... thread.i
-	@echo ... thread.s
 .PHONY : help
 
 

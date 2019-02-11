@@ -8,12 +8,12 @@
 
 class Burst {
 private:
-
-
-
+    int cpu_time;
+    int io_time;
 
 public:
-
+    int get_cpu_time();
+    int get_io_time();
 };
 
 

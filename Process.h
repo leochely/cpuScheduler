@@ -6,7 +6,7 @@
 #define CPUSCHEDULLER_PROCESS_H
 
 class Process {
-private:
+/*private:
     int pid;
     enum type{SYSTEM, INTERACTIVE, NORMAL, BATCH};
     vector <Thread> threads;
@@ -14,7 +14,7 @@ private:
 public:
     Process();
     int getPid();
-    int getType();
+    int getType();*/
 };
 
 

@@ -7,7 +7,11 @@
 
 
 class thread {
+private:
+    enum state{NEW, READY, RUNNING, BLOCKED, EXIT};
 
+public:
+    int getState();
 };
 
 

@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+Z:/CS/CSCI442/cpuScheduller/Burst.h
+
+Z:/CS/CSCI442/cpuScheduller/Process.h
+
+Z:/CS/CSCI442/cpuScheduller/Thread.h
+
+Z:/CS/CSCI442/cpuScheduller/main.cpp
+iostream
+-
+fstream
+-
+Process.h
+Z:/CS/CSCI442/cpuScheduller/Process.h
+Thread.h
+Z:/CS/CSCI442/cpuScheduller/Thread.h
+Burst.h
+Z:/CS/CSCI442/cpuScheduller/Burst.h
+

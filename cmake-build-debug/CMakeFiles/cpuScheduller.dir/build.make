@@ -69,74 +69,74 @@ CMakeFiles/cpuScheduller.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpuScheduller.dir/main.cpp.s"
 	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Z:\CS\CSCI442\cpuScheduller\main.cpp -o CMakeFiles\cpuScheduller.dir\main.cpp.s
 
-CMakeFiles/cpuScheduller.dir/process.cpp.obj: CMakeFiles/cpuScheduller.dir/flags.make
-CMakeFiles/cpuScheduller.dir/process.cpp.obj: ../process.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Z:\CS\CSCI442\cpuScheduller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cpuScheduller.dir/process.cpp.obj"
-	C:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\cpuScheduller.dir\process.cpp.obj -c Z:\CS\CSCI442\cpuScheduller\process.cpp
+CMakeFiles/cpuScheduller.dir/Process.cpp.obj: CMakeFiles/cpuScheduller.dir/flags.make
+CMakeFiles/cpuScheduller.dir/Process.cpp.obj: ../Process.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Z:\CS\CSCI442\cpuScheduller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cpuScheduller.dir/Process.cpp.obj"
+	C:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\cpuScheduller.dir\Process.cpp.obj -c Z:\CS\CSCI442\cpuScheduller\Process.cpp
 
-CMakeFiles/cpuScheduller.dir/process.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpuScheduller.dir/process.cpp.i"
-	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E Z:\CS\CSCI442\cpuScheduller\process.cpp > CMakeFiles\cpuScheduller.dir\process.cpp.i
+CMakeFiles/cpuScheduller.dir/Process.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpuScheduller.dir/Process.cpp.i"
+	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E Z:\CS\CSCI442\cpuScheduller\Process.cpp > CMakeFiles\cpuScheduller.dir\Process.cpp.i
 
-CMakeFiles/cpuScheduller.dir/process.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpuScheduller.dir/process.cpp.s"
-	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Z:\CS\CSCI442\cpuScheduller\process.cpp -o CMakeFiles\cpuScheduller.dir\process.cpp.s
+CMakeFiles/cpuScheduller.dir/Process.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpuScheduller.dir/Process.cpp.s"
+	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Z:\CS\CSCI442\cpuScheduller\Process.cpp -o CMakeFiles\cpuScheduller.dir\Process.cpp.s
 
-CMakeFiles/cpuScheduller.dir/event.cpp.obj: CMakeFiles/cpuScheduller.dir/flags.make
-CMakeFiles/cpuScheduller.dir/event.cpp.obj: ../event.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Z:\CS\CSCI442\cpuScheduller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cpuScheduller.dir/event.cpp.obj"
-	C:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\cpuScheduller.dir\event.cpp.obj -c Z:\CS\CSCI442\cpuScheduller\event.cpp
+CMakeFiles/cpuScheduller.dir/Event.cpp.obj: CMakeFiles/cpuScheduller.dir/flags.make
+CMakeFiles/cpuScheduller.dir/Event.cpp.obj: ../Event.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Z:\CS\CSCI442\cpuScheduller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cpuScheduller.dir/Event.cpp.obj"
+	C:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\cpuScheduller.dir\Event.cpp.obj -c Z:\CS\CSCI442\cpuScheduller\Event.cpp
 
-CMakeFiles/cpuScheduller.dir/event.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpuScheduller.dir/event.cpp.i"
-	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E Z:\CS\CSCI442\cpuScheduller\event.cpp > CMakeFiles\cpuScheduller.dir\event.cpp.i
+CMakeFiles/cpuScheduller.dir/Event.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpuScheduller.dir/Event.cpp.i"
+	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E Z:\CS\CSCI442\cpuScheduller\Event.cpp > CMakeFiles\cpuScheduller.dir\Event.cpp.i
 
-CMakeFiles/cpuScheduller.dir/event.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpuScheduller.dir/event.cpp.s"
-	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Z:\CS\CSCI442\cpuScheduller\event.cpp -o CMakeFiles\cpuScheduller.dir\event.cpp.s
+CMakeFiles/cpuScheduller.dir/Event.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpuScheduller.dir/Event.cpp.s"
+	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Z:\CS\CSCI442\cpuScheduller\Event.cpp -o CMakeFiles\cpuScheduller.dir\Event.cpp.s
 
-CMakeFiles/cpuScheduller.dir/thread.cpp.obj: CMakeFiles/cpuScheduller.dir/flags.make
-CMakeFiles/cpuScheduller.dir/thread.cpp.obj: ../thread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Z:\CS\CSCI442\cpuScheduller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cpuScheduller.dir/thread.cpp.obj"
-	C:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\cpuScheduller.dir\thread.cpp.obj -c Z:\CS\CSCI442\cpuScheduller\thread.cpp
+CMakeFiles/cpuScheduller.dir/Thread.cpp.obj: CMakeFiles/cpuScheduller.dir/flags.make
+CMakeFiles/cpuScheduller.dir/Thread.cpp.obj: ../Thread.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Z:\CS\CSCI442\cpuScheduller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cpuScheduller.dir/Thread.cpp.obj"
+	C:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\cpuScheduller.dir\Thread.cpp.obj -c Z:\CS\CSCI442\cpuScheduller\Thread.cpp
 
-CMakeFiles/cpuScheduller.dir/thread.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpuScheduller.dir/thread.cpp.i"
-	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E Z:\CS\CSCI442\cpuScheduller\thread.cpp > CMakeFiles\cpuScheduller.dir\thread.cpp.i
+CMakeFiles/cpuScheduller.dir/Thread.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpuScheduller.dir/Thread.cpp.i"
+	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E Z:\CS\CSCI442\cpuScheduller\Thread.cpp > CMakeFiles\cpuScheduller.dir\Thread.cpp.i
 
-CMakeFiles/cpuScheduller.dir/thread.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpuScheduller.dir/thread.cpp.s"
-	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Z:\CS\CSCI442\cpuScheduller\thread.cpp -o CMakeFiles\cpuScheduller.dir\thread.cpp.s
+CMakeFiles/cpuScheduller.dir/Thread.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpuScheduller.dir/Thread.cpp.s"
+	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Z:\CS\CSCI442\cpuScheduller\Thread.cpp -o CMakeFiles\cpuScheduller.dir\Thread.cpp.s
 
-CMakeFiles/cpuScheduller.dir/burst.cpp.obj: CMakeFiles/cpuScheduller.dir/flags.make
-CMakeFiles/cpuScheduller.dir/burst.cpp.obj: ../burst.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Z:\CS\CSCI442\cpuScheduller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cpuScheduller.dir/burst.cpp.obj"
-	C:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\cpuScheduller.dir\burst.cpp.obj -c Z:\CS\CSCI442\cpuScheduller\burst.cpp
+CMakeFiles/cpuScheduller.dir/Burst.cpp.obj: CMakeFiles/cpuScheduller.dir/flags.make
+CMakeFiles/cpuScheduller.dir/Burst.cpp.obj: ../Burst.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Z:\CS\CSCI442\cpuScheduller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cpuScheduller.dir/Burst.cpp.obj"
+	C:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\cpuScheduller.dir\Burst.cpp.obj -c Z:\CS\CSCI442\cpuScheduller\Burst.cpp
 
-CMakeFiles/cpuScheduller.dir/burst.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpuScheduller.dir/burst.cpp.i"
-	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E Z:\CS\CSCI442\cpuScheduller\burst.cpp > CMakeFiles\cpuScheduller.dir\burst.cpp.i
+CMakeFiles/cpuScheduller.dir/Burst.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpuScheduller.dir/Burst.cpp.i"
+	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E Z:\CS\CSCI442\cpuScheduller\Burst.cpp > CMakeFiles\cpuScheduller.dir\Burst.cpp.i
 
-CMakeFiles/cpuScheduller.dir/burst.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpuScheduller.dir/burst.cpp.s"
-	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Z:\CS\CSCI442\cpuScheduller\burst.cpp -o CMakeFiles\cpuScheduller.dir\burst.cpp.s
+CMakeFiles/cpuScheduller.dir/Burst.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpuScheduller.dir/Burst.cpp.s"
+	C:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Z:\CS\CSCI442\cpuScheduller\Burst.cpp -o CMakeFiles\cpuScheduller.dir\Burst.cpp.s
 
 # Object files for target cpuScheduller
 cpuScheduller_OBJECTS = \
 "CMakeFiles/cpuScheduller.dir/main.cpp.obj" \
-"CMakeFiles/cpuScheduller.dir/process.cpp.obj" \
-"CMakeFiles/cpuScheduller.dir/event.cpp.obj" \
-"CMakeFiles/cpuScheduller.dir/thread.cpp.obj" \
-"CMakeFiles/cpuScheduller.dir/burst.cpp.obj"
+"CMakeFiles/cpuScheduller.dir/Process.cpp.obj" \
+"CMakeFiles/cpuScheduller.dir/Event.cpp.obj" \
+"CMakeFiles/cpuScheduller.dir/Thread.cpp.obj" \
+"CMakeFiles/cpuScheduller.dir/Burst.cpp.obj"
 
 # External object files for target cpuScheduller
 cpuScheduller_EXTERNAL_OBJECTS =
 
 cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/main.cpp.obj
-cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/process.cpp.obj
-cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/event.cpp.obj
-cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/thread.cpp.obj
-cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/burst.cpp.obj
+cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/Process.cpp.obj
+cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/Event.cpp.obj
+cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/Thread.cpp.obj
+cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/Burst.cpp.obj
 cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/build.make
 cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/linklibs.rsp
 cpuScheduller.exe: CMakeFiles/cpuScheduller.dir/objects1.rsp

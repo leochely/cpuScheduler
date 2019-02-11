@@ -80,31 +80,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="Z:/CS/CSCI442/cpuScheduller/burst.cpp">
+		<Unit filename="Z:/CS/CSCI442/cpuScheduller/Burst.cpp">
 			<Option target="cpuScheduller"/>
 		</Unit>
-		<Unit filename="Z:/CS/CSCI442/cpuScheduller/burst.h">
+		<Unit filename="Z:/CS/CSCI442/cpuScheduller/Burst.h">
 			<Option target="cpuScheduller"/>
 		</Unit>
-		<Unit filename="Z:/CS/CSCI442/cpuScheduller/event.cpp">
+		<Unit filename="Z:/CS/CSCI442/cpuScheduller/Event.cpp">
 			<Option target="cpuScheduller"/>
 		</Unit>
-		<Unit filename="Z:/CS/CSCI442/cpuScheduller/event.h">
+		<Unit filename="Z:/CS/CSCI442/cpuScheduller/Event.h">
+			<Option target="cpuScheduller"/>
+		</Unit>
+		<Unit filename="Z:/CS/CSCI442/cpuScheduller/Process.cpp">
+			<Option target="cpuScheduller"/>
+		</Unit>
+		<Unit filename="Z:/CS/CSCI442/cpuScheduller/Process.h">
+			<Option target="cpuScheduller"/>
+		</Unit>
+		<Unit filename="Z:/CS/CSCI442/cpuScheduller/Thread.cpp">
+			<Option target="cpuScheduller"/>
+		</Unit>
+		<Unit filename="Z:/CS/CSCI442/cpuScheduller/Thread.h">
 			<Option target="cpuScheduller"/>
 		</Unit>
 		<Unit filename="Z:/CS/CSCI442/cpuScheduller/main.cpp">
-			<Option target="cpuScheduller"/>
-		</Unit>
-		<Unit filename="Z:/CS/CSCI442/cpuScheduller/process.cpp">
-			<Option target="cpuScheduller"/>
-		</Unit>
-		<Unit filename="Z:/CS/CSCI442/cpuScheduller/process.h">
-			<Option target="cpuScheduller"/>
-		</Unit>
-		<Unit filename="Z:/CS/CSCI442/cpuScheduller/thread.cpp">
-			<Option target="cpuScheduller"/>
-		</Unit>
-		<Unit filename="Z:/CS/CSCI442/cpuScheduller/thread.h">
 			<Option target="cpuScheduller"/>
 		</Unit>
 		<Unit filename="Z:/CS/CSCI442/cpuScheduller/CMakeLists.txt">
