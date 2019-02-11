@@ -4,7 +4,6 @@
 
 #ifndef CPUSCHEDULLER_PROCESS_H
 #define CPUSCHEDULLER_PROCESS_H
-#include <string>
 
 class Process {
 private:
@@ -15,7 +14,7 @@ private:
 public:
     Process();
     int getPid();
-    std::string getType();
+    int getType();
 };
 
 
