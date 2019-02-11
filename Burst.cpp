@@ -5,6 +5,11 @@
 #include "Burst.h"
 
 
+Burst::Burst(int cpu, int io){
+    cpu_time = cpu;
+    io_time = io;
+}
+
 int Burst::get_cpu_time() {
     return cpu_time;
 }

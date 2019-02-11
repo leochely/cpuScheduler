@@ -12,6 +12,7 @@ private:
     int io_time;
 
 public:
+    Burst(int cpu, int io);
     int get_cpu_time();
     int get_io_time();
 };

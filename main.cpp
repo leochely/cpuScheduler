@@ -11,8 +11,6 @@ int main() {
     int thread_switch_overhead;
     int process_switch_overhead;
 
-    std::string dummyLine; // Used to skip lines during file parsing
-
     if(input.is_open()){ // File parsing
         input >> num_processes;
         input >> thread_switch_overhead;
@@ -37,10 +35,12 @@ int main() {
                 input >> num_CPU_bursts;
 
                 for(int j = 0; j < num_CPU_bursts; j++){
-                    // Create a new Burst instance
-                    getline(input, dummyLine);
+                    int cpu, io;
 
-                    // Add the burst to the Thread;
+                    input >> cpu;
+                    input >> io;
+
+                    Burst temp = Burst(cpu, io);
                 }
             }
         }
