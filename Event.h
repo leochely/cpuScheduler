@@ -6,7 +6,7 @@
 #define CPUSCHEDULLER_EVENT_H
 
 
-class event {
+class Event {
 
 };
 

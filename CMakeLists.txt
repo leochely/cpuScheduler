@@ -3,4 +3,4 @@ project(cpuScheduller)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(cpuScheduller main.cpp process.cpp process.h event.cpp event.h thread.cpp thread.h burst.cpp burst.h)
+add_executable(cpuScheduller main.cpp Process.cpp Process.h Event.cpp Event.h Thread.cpp Thread.h Burst.cpp Burst.h)

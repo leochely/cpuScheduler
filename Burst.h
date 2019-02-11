@@ -6,7 +6,7 @@
 #define CPUSCHEDULLER_BURST_H
 
 
-class burst {
+class Burst {
 private:
 
 
