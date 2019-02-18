@@ -4,14 +4,14 @@
 
 #ifndef CPUSCHEDULER_CPU_H
 #define CPUSCHEDULER_CPU_H
-
+#include <string>
 
 class Cpu {
 private:
 
 public:
     Cpu(){};
-    void processInput(string filename);
+    void processInput(std::string filename);
 };
 
 

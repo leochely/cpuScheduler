@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "Z:/CS/CSCI442/cpuScheduller/Burst.cpp" "Z:/CS/CSCI442/cpuScheduller/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Burst.cpp.obj"
-  "Z:/CS/CSCI442/cpuScheduller/Event.cpp" "Z:/CS/CSCI442/cpuScheduller/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Event.cpp.obj"
-  "Z:/CS/CSCI442/cpuScheduller/Process.cpp" "Z:/CS/CSCI442/cpuScheduller/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Process.cpp.obj"
-  "Z:/CS/CSCI442/cpuScheduller/Thread.cpp" "Z:/CS/CSCI442/cpuScheduller/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Thread.cpp.obj"
-  "Z:/CS/CSCI442/cpuScheduller/main.cpp" "Z:/CS/CSCI442/cpuScheduller/cmake-build-debug/CMakeFiles/cpuScheduller.dir/main.cpp.obj"
+  "Z:/CS/CSCI442/cpuScheduler/Burst.cpp" "Z:/CS/CSCI442/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Burst.cpp.obj"
+  "Z:/CS/CSCI442/cpuScheduler/Event.cpp" "Z:/CS/CSCI442/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Event.cpp.obj"
+  "Z:/CS/CSCI442/cpuScheduler/Process.cpp" "Z:/CS/CSCI442/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Process.cpp.obj"
+  "Z:/CS/CSCI442/cpuScheduler/Thread.cpp" "Z:/CS/CSCI442/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Thread.cpp.obj"
+  "Z:/CS/CSCI442/cpuScheduler/main.cpp" "Z:/CS/CSCI442/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

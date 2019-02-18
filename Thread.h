@@ -4,14 +4,19 @@
 
 #ifndef CPUSCHEDULLER_THREAD_H
 #define CPUSCHEDULLER_THREAD_H
+#include<vector>
+#include "Burst.h"
 
-
-class thread {
+class Thread {
 private:
-    enum state{NEW, READY, RUNNING, BLOCKED, EXIT};
+    enum State{NEW, READY, RUNNING, BLOCKED, EXIT};
+    State state;
+    std::vector<Burst> bursts;
 
 public:
-    int getState();
+    Thread();
+    void addBurst(Burst b);
+    State getState();
 };
 
 

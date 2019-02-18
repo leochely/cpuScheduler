@@ -6,21 +6,37 @@
 
 #IncludeRegexTransform: 
 
-Z:/CS/CSCI442/cpuScheduller/Burst.h
+Z:/CS/CSCI442/cpuScheduler/Burst.h
 
-Z:/CS/CSCI442/cpuScheduller/Process.h
+Z:/CS/CSCI442/cpuScheduler/Cpu.h
+string
+-
 
-Z:/CS/CSCI442/cpuScheduller/Thread.h
+Z:/CS/CSCI442/cpuScheduler/Process.h
+vector
+-
+Thread.h
+Z:/CS/CSCI442/cpuScheduler/Thread.h
 
-Z:/CS/CSCI442/cpuScheduller/main.cpp
+Z:/CS/CSCI442/cpuScheduler/Thread.h
+vector
+-
+Burst.h
+Z:/CS/CSCI442/cpuScheduler/Burst.h
+
+Z:/CS/CSCI442/cpuScheduler/main.cpp
 iostream
 -
 fstream
 -
+string
+-
 Process.h
-Z:/CS/CSCI442/cpuScheduller/Process.h
+Z:/CS/CSCI442/cpuScheduler/Process.h
 Thread.h
-Z:/CS/CSCI442/cpuScheduller/Thread.h
+Z:/CS/CSCI442/cpuScheduler/Thread.h
 Burst.h
-Z:/CS/CSCI442/cpuScheduller/Burst.h
+Z:/CS/CSCI442/cpuScheduler/Burst.h
+Cpu.h
+Z:/CS/CSCI442/cpuScheduler/Cpu.h
 

@@ -4,17 +4,21 @@
 
 #ifndef CPUSCHEDULLER_PROCESS_H
 #define CPUSCHEDULLER_PROCESS_H
+#include <vector>
+#include "Thread.h"
 
 class Process {
-/*private:
+private:
     int pid;
-    enum type{SYSTEM, INTERACTIVE, NORMAL, BATCH};
-    vector <Thread> threads;
+    enum Type{SYSTEM, INTERACTIVE, NORMAL, BATCH};
+    Type type;
+    std::vector <Thread> threads;
 
 public:
-    Process();
+    Process(int type, int pid);
     int getPid();
-    int getType();*/
+    Type getType();
+    void addThread(Thread thread);
 };
 
 

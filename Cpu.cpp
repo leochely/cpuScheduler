@@ -24,14 +24,16 @@ void Cpu::processInput(string inputFile){
         while(!input.eof()){
             int process_id;
             int num_threads;
+            int type;
 
             input >> process_id;
+            int >> type;
             input >> num_threads;
 
-            // Create a new Process instance
+            Process tempProcess(type, process_id);
 
             for(int i = 0 ; i < num_threads; i++) {
-                // Create anew Thread instance
+                Thread tempThread;
 
                 int thread_arrival_time;
                 int num_CPU_bursts;
@@ -45,13 +47,18 @@ void Cpu::processInput(string inputFile){
                     input >> cpu;
                     input >> io;
 
-                    Burst temp = Burst(cpu, io);
+                    Burst tempBurst = Burst(cpu, io);
+
+                    tempThread.addBurst(tempBurst);
                 }
+                tempProcess.addThread(tempThread);
             }
         }
+        input.close();
     }
     else{
         std::cerr << "Unable to open file";
     }
 
-}
+
+};
