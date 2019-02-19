@@ -1,15 +1,9 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include "Process.h"
-#include "Thread.h"
-#include "Burst.h"
 #include "Cpu.h"
 
-int main() {
+int main(int argc, char* argv[]) {
     Cpu cpu;
-    std::string file = "Input.txt";
-    cpu.processInput(file);
+    cpu.processInput("input.txt");
+    cpu.processEvents();
 
     return 0;
 }

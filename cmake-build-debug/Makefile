@@ -149,6 +149,33 @@ Burst.cpp.s:
 	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Burst.cpp.s
 .PHONY : Burst.cpp.s
 
+Cpu.obj: Cpu.cpp.obj
+
+.PHONY : Cpu.obj
+
+# target to build an object file
+Cpu.cpp.obj:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj
+.PHONY : Cpu.cpp.obj
+
+Cpu.i: Cpu.cpp.i
+
+.PHONY : Cpu.i
+
+# target to preprocess a source file
+Cpu.cpp.i:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Cpu.cpp.i
+.PHONY : Cpu.cpp.i
+
+Cpu.s: Cpu.cpp.s
+
+.PHONY : Cpu.s
+
+# target to generate assembly for a file
+Cpu.cpp.s:
+	$(MAKE) -f CMakeFiles\cpuScheduller.dir\build.make CMakeFiles/cpuScheduller.dir/Cpu.cpp.s
+.PHONY : Cpu.cpp.s
+
 Event.obj: Event.cpp.obj
 
 .PHONY : Event.obj
@@ -269,6 +296,9 @@ help:
 	@echo ... Burst.obj
 	@echo ... Burst.i
 	@echo ... Burst.s
+	@echo ... Cpu.obj
+	@echo ... Cpu.i
+	@echo ... Cpu.s
 	@echo ... Event.obj
 	@echo ... Event.i
 	@echo ... Event.s

@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/cpuScheduller.dir/Event.cpp.obj"
   "CMakeFiles/cpuScheduller.dir/Thread.cpp.obj"
   "CMakeFiles/cpuScheduller.dir/Burst.cpp.obj"
+  "CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj"
   "cpuScheduller.pdb"
   "cpuScheduller.exe"
   "cpuScheduller.exe.manifest"

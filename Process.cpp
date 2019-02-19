@@ -21,8 +21,8 @@ Process::Process(int t, int p){
             break;
     }
     pid = p;
-};
+}
 
 void Process::addThread(Thread thread) {
   threads.push_back(thread);
-};
+}

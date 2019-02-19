@@ -5,14 +5,6 @@
 #include "Thread.h"
 
 
-/*State Thread::getState(){
-    return state;
-};*/
-
-Thread::Thread() {
-    state = NEW;
-};
-
 void Thread::addBurst(Burst b){
     bursts.push_back(b);
 };

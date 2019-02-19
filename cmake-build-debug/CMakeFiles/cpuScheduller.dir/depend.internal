@@ -4,9 +4,19 @@
 CMakeFiles/cpuScheduller.dir/Burst.cpp.obj
  Z:/CS/CSCI442/cpuScheduler/Burst.cpp
  Z:/CS/CSCI442/cpuScheduler/Burst.h
+CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj
+ Z:/CS/CSCI442/cpuScheduler/Burst.h
+ Z:/CS/CSCI442/cpuScheduler/Cpu.cpp
+ Z:/CS/CSCI442/cpuScheduler/Cpu.h
+ Z:/CS/CSCI442/cpuScheduler/Event.h
+ Z:/CS/CSCI442/cpuScheduler/Process.h
+ Z:/CS/CSCI442/cpuScheduler/Thread.h
 CMakeFiles/cpuScheduller.dir/Event.cpp.obj
+ Z:/CS/CSCI442/cpuScheduler/Burst.h
  Z:/CS/CSCI442/cpuScheduler/Event.cpp
  Z:/CS/CSCI442/cpuScheduler/Event.h
+ Z:/CS/CSCI442/cpuScheduler/Process.h
+ Z:/CS/CSCI442/cpuScheduler/Thread.h
 CMakeFiles/cpuScheduller.dir/Process.cpp.obj
  Z:/CS/CSCI442/cpuScheduler/Burst.h
  Z:/CS/CSCI442/cpuScheduler/Process.cpp
@@ -19,6 +29,7 @@ CMakeFiles/cpuScheduller.dir/Thread.cpp.obj
 CMakeFiles/cpuScheduller.dir/main.cpp.obj
  Z:/CS/CSCI442/cpuScheduler/Burst.h
  Z:/CS/CSCI442/cpuScheduler/Cpu.h
+ Z:/CS/CSCI442/cpuScheduler/Event.h
  Z:/CS/CSCI442/cpuScheduler/Process.h
  Z:/CS/CSCI442/cpuScheduler/Thread.h
  Z:/CS/CSCI442/cpuScheduler/main.cpp

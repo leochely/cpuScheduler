@@ -15,10 +15,12 @@ private:
     std::vector <Thread> threads;
 
 public:
+    Process(){;};
     Process(int type, int pid);
-    int getPid();
-    Type getType();
+    int getPid()const{return pid;};
+    Type getType() const{return type;};
     void addThread(Thread thread);
+    std::vector<Thread> getThreads(){return threads;};
 };
 
 

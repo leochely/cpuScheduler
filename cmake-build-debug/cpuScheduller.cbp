@@ -86,6 +86,12 @@
 		<Unit filename="Z:/CS/CSCI442/cpuScheduler/Burst.h">
 			<Option target="cpuScheduller"/>
 		</Unit>
+		<Unit filename="Z:/CS/CSCI442/cpuScheduler/Cpu.cpp">
+			<Option target="cpuScheduller"/>
+		</Unit>
+		<Unit filename="Z:/CS/CSCI442/cpuScheduler/Cpu.h">
+			<Option target="cpuScheduller"/>
+		</Unit>
 		<Unit filename="Z:/CS/CSCI442/cpuScheduler/Event.cpp">
 			<Option target="cpuScheduller"/>
 		</Unit>

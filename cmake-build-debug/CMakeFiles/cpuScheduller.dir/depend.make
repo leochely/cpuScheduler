@@ -4,8 +4,18 @@
 CMakeFiles/cpuScheduller.dir/Burst.cpp.obj: ../Burst.cpp
 CMakeFiles/cpuScheduller.dir/Burst.cpp.obj: ../Burst.h
 
+CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj: ../Burst.h
+CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj: ../Cpu.cpp
+CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj: ../Cpu.h
+CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj: ../Event.h
+CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj: ../Process.h
+CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj: ../Thread.h
+
+CMakeFiles/cpuScheduller.dir/Event.cpp.obj: ../Burst.h
 CMakeFiles/cpuScheduller.dir/Event.cpp.obj: ../Event.cpp
 CMakeFiles/cpuScheduller.dir/Event.cpp.obj: ../Event.h
+CMakeFiles/cpuScheduller.dir/Event.cpp.obj: ../Process.h
+CMakeFiles/cpuScheduller.dir/Event.cpp.obj: ../Thread.h
 
 CMakeFiles/cpuScheduller.dir/Process.cpp.obj: ../Burst.h
 CMakeFiles/cpuScheduller.dir/Process.cpp.obj: ../Process.cpp
@@ -18,6 +28,7 @@ CMakeFiles/cpuScheduller.dir/Thread.cpp.obj: ../Thread.h
 
 CMakeFiles/cpuScheduller.dir/main.cpp.obj: ../Burst.h
 CMakeFiles/cpuScheduller.dir/main.cpp.obj: ../Cpu.h
+CMakeFiles/cpuScheduller.dir/main.cpp.obj: ../Event.h
 CMakeFiles/cpuScheduller.dir/main.cpp.obj: ../Process.h
 CMakeFiles/cpuScheduller.dir/main.cpp.obj: ../Thread.h
 CMakeFiles/cpuScheduller.dir/main.cpp.obj: ../main.cpp

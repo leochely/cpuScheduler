@@ -5,11 +5,16 @@
 #include "Cpu.h"
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <queue>
 #include "Process.h"
 #include "Thread.h"
 #include "Burst.h"
 
-void Cpu::processInput(string inputFile){
+Cpu::Cpu(){
+}
+
+void Cpu::processInput(std::string inputFile){
     std::ifstream input(inputFile);
 
     int num_processes;
@@ -21,27 +26,28 @@ void Cpu::processInput(string inputFile){
         input >> thread_switch_overhead;
         input >> process_switch_overhead;
 
-        while(!input.eof()){
+        for(int i = 0; i < num_processes; i++){
             int process_id;
-            int num_threads;
             int type;
+            int num_threads;
 
             input >> process_id;
-            int >> type;
+            input >> type;
             input >> num_threads;
 
             Process tempProcess(type, process_id);
 
-            for(int i = 0 ; i < num_threads; i++) {
-                Thread tempThread;
+            for(int j = 0 ; j < num_threads; j++) {
 
                 int thread_arrival_time;
                 int num_CPU_bursts;
 
+                Thread tempThread(thread_arrival_time);
+
                 input >> thread_arrival_time;
                 input >> num_CPU_bursts;
 
-                for(int j = 0; j < num_CPU_bursts; j++){
+                for(int k = 0; k < num_CPU_bursts; k++){
                     int cpu, io;
 
                     input >> cpu;
@@ -53,12 +59,27 @@ void Cpu::processInput(string inputFile){
                 }
                 tempProcess.addThread(tempThread);
             }
+            processes.push_back(tempProcess);
         }
         input.close();
     }
     else{
         std::cerr << "Unable to open file";
     }
+}
 
+void Cpu::processEvents() {
 
-};
+    for(int i = 0; i < processes.size(); i++) {
+        for (int j = 0; j < processes[i].getThreads().size(); j++) {
+            Event tempEvent(processes[i], processes[i].getThreads()[j], processes[i].getThreads()[j].getTime());
+            priorityEvents.emplace(tempEvent);
+        }
+    }
+
+    while(!priorityEvents.empty()){
+        priorityEvents.top().printEvent();
+        priorityEvents.pop();
+    }
+
+}

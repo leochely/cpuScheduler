@@ -9,14 +9,18 @@
 
 class Thread {
 private:
+    int time;
     enum State{NEW, READY, RUNNING, BLOCKED, EXIT};
     State state;
     std::vector<Burst> bursts;
+    int id;
 
 public:
-    Thread();
+    Thread(){;};
+    Thread(int t){time = t; state = NEW;};
     void addBurst(Burst b);
-    State getState();
+    int getTime() const{return time;};
+    int getId() const{return id;};
 };
 
 

@@ -8,35 +8,31 @@
 
 Z:/CS/CSCI442/cpuScheduler/Burst.h
 
-Z:/CS/CSCI442/cpuScheduler/Cpu.h
-string
--
-
-Z:/CS/CSCI442/cpuScheduler/Process.h
-vector
+Z:/CS/CSCI442/cpuScheduler/Event.cpp
+Event.h
+Z:/CS/CSCI442/cpuScheduler/Event.h
+iostream
 -
 Thread.h
 Z:/CS/CSCI442/cpuScheduler/Thread.h
+Process.h
+Z:/CS/CSCI442/cpuScheduler/Process.h
 
-Z:/CS/CSCI442/cpuScheduler/Thread.h
-vector
--
-Burst.h
-Z:/CS/CSCI442/cpuScheduler/Burst.h
-
-Z:/CS/CSCI442/cpuScheduler/main.cpp
-iostream
--
-fstream
--
-string
--
+Z:/CS/CSCI442/cpuScheduler/Event.h
 Process.h
 Z:/CS/CSCI442/cpuScheduler/Process.h
 Thread.h
 Z:/CS/CSCI442/cpuScheduler/Thread.h
+
+Z:/CS/CSCI442/cpuScheduler/Process.h
+vector
+-
+Thread.h
+Z:/CS/CSCI442/cpuScheduler/Thread.h
+
+Z:/CS/CSCI442/cpuScheduler/Thread.h
+vector
+-
 Burst.h
 Z:/CS/CSCI442/cpuScheduler/Burst.h
-Cpu.h
-Z:/CS/CSCI442/cpuScheduler/Cpu.h
 
