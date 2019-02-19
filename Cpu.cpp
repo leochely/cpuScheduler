@@ -42,21 +42,29 @@ void Cpu::processInput(std::string inputFile){
                 int thread_arrival_time;
                 int num_CPU_bursts;
 
-                Thread tempThread(thread_arrival_time);
-
                 input >> thread_arrival_time;
                 input >> num_CPU_bursts;
 
-                for(int k = 0; k < num_CPU_bursts; k++){
+                Thread tempThread(thread_arrival_time, j);
+
+                for(int k = 0; k < num_CPU_bursts-1; k++){
                     int cpu, io;
 
                     input >> cpu;
                     input >> io;
+                    // std::cout << cpu << " " << io << std::endl;
 
                     Burst tempBurst = Burst(cpu, io);
 
                     tempThread.addBurst(tempBurst);
                 }
+                int cpu;
+                input >> cpu;
+
+                Burst tempBurst = Burst(cpu, 0);
+
+                tempThread.addBurst(tempBurst);
+
                 tempProcess.addThread(tempThread);
             }
             processes.push_back(tempProcess);

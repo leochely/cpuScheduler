@@ -3,7 +3,7 @@
 //
 
 #include "Process.h"
-
+#include <string>
 
 Process::Process(int t, int p){
     switch(t){
@@ -25,4 +25,22 @@ Process::Process(int t, int p){
 
 void Process::addThread(Thread thread) {
   threads.push_back(thread);
+}
+
+std::string Process::getType() const {
+    switch(type){
+        case SYSTEM:
+            return "SYSTEM";
+            break;
+        case INTERACTIVE:
+            return "INTERACTIVE";
+            break;
+        case NORMAL:
+            return "NORMAL";
+            break;
+        case BATCH:
+            return "BATCH";
+            break;
+    }
+    return "test";
 }

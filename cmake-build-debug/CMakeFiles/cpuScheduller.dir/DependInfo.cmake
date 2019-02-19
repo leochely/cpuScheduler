@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "Z:/CS/CSCI442/cpuScheduler/Burst.cpp" "Z:/CS/CSCI442/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Burst.cpp.obj"
-  "Z:/CS/CSCI442/cpuScheduler/Cpu.cpp" "Z:/CS/CSCI442/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj"
-  "Z:/CS/CSCI442/cpuScheduler/Event.cpp" "Z:/CS/CSCI442/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Event.cpp.obj"
-  "Z:/CS/CSCI442/cpuScheduler/Process.cpp" "Z:/CS/CSCI442/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Process.cpp.obj"
-  "Z:/CS/CSCI442/cpuScheduler/Thread.cpp" "Z:/CS/CSCI442/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Thread.cpp.obj"
-  "Z:/CS/CSCI442/cpuScheduler/main.cpp" "Z:/CS/CSCI442/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/main.cpp.obj"
+  "C:/Users/Leo/Projects/cpuScheduler/Burst.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Burst.cpp.obj"
+  "C:/Users/Leo/Projects/cpuScheduler/Cpu.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj"
+  "C:/Users/Leo/Projects/cpuScheduler/Event.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Event.cpp.obj"
+  "C:/Users/Leo/Projects/cpuScheduler/Process.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Process.cpp.obj"
+  "C:/Users/Leo/Projects/cpuScheduler/Thread.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Thread.cpp.obj"
+  "C:/Users/Leo/Projects/cpuScheduler/main.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

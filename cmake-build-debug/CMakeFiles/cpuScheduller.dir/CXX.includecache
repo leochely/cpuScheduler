@@ -6,33 +6,43 @@
 
 #IncludeRegexTransform: 
 
-Z:/CS/CSCI442/cpuScheduler/Burst.h
+C:/Users/Leo/Projects/cpuScheduler/Burst.h
 
-Z:/CS/CSCI442/cpuScheduler/Event.cpp
+C:/Users/Leo/Projects/cpuScheduler/Cpu.h
+Process.h
+C:/Users/Leo/Projects/cpuScheduler/Process.h
 Event.h
-Z:/CS/CSCI442/cpuScheduler/Event.h
-iostream
+C:/Users/Leo/Projects/cpuScheduler/Event.h
+string
 -
-Thread.h
-Z:/CS/CSCI442/cpuScheduler/Thread.h
-Process.h
-Z:/CS/CSCI442/cpuScheduler/Process.h
+queue
+-
+functional
+-
 
-Z:/CS/CSCI442/cpuScheduler/Event.h
+C:/Users/Leo/Projects/cpuScheduler/Event.h
 Process.h
-Z:/CS/CSCI442/cpuScheduler/Process.h
+C:/Users/Leo/Projects/cpuScheduler/Process.h
 Thread.h
-Z:/CS/CSCI442/cpuScheduler/Thread.h
+C:/Users/Leo/Projects/cpuScheduler/Thread.h
 
-Z:/CS/CSCI442/cpuScheduler/Process.h
+C:/Users/Leo/Projects/cpuScheduler/Process.h
 vector
 -
 Thread.h
-Z:/CS/CSCI442/cpuScheduler/Thread.h
+C:/Users/Leo/Projects/cpuScheduler/Thread.h
+string
+-
 
-Z:/CS/CSCI442/cpuScheduler/Thread.h
+C:/Users/Leo/Projects/cpuScheduler/Thread.h
 vector
 -
 Burst.h
-Z:/CS/CSCI442/cpuScheduler/Burst.h
+C:/Users/Leo/Projects/cpuScheduler/Burst.h
+
+C:/Users/Leo/Projects/cpuScheduler/main.cpp
+Cpu.h
+C:/Users/Leo/Projects/cpuScheduler/Cpu.h
+string
+-
 

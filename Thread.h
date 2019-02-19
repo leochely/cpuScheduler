@@ -17,7 +17,7 @@ private:
 
 public:
     Thread(){;};
-    Thread(int t){time = t; state = NEW;};
+    Thread(int t, int i){time = t; state = NEW; id = i;};
     void addBurst(Burst b);
     int getTime() const{return time;};
     int getId() const{return id;};

@@ -6,6 +6,7 @@
 #define CPUSCHEDULLER_PROCESS_H
 #include <vector>
 #include "Thread.h"
+#include <string>
 
 class Process {
 private:
@@ -18,7 +19,7 @@ public:
     Process(){;};
     Process(int type, int pid);
     int getPid()const{return pid;};
-    Type getType() const{return type;};
+    std::string getType() const;
     void addThread(Thread thread);
     std::vector<Thread> getThreads(){return threads;};
 };
