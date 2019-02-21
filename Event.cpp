@@ -7,6 +7,7 @@
 #include "Thread.h"
 #include "Process.h"
 
+//Displays the Event (only THREAD_ARRIVED) implemented so far
 void Event::printEvent() const{
     std::cout << "At time " << time << ":" << std::endl;
     switch(type){
@@ -22,6 +23,7 @@ void Event::printEvent() const{
     }
 }
 
+// < operator overloaded (for the priority queue)
 bool Event::operator<(const Event &temp) const {
     return (time>temp.time);
 }

@@ -1,5 +1,6 @@
 //
 // Created by Leo on 2/14/2019.
+// Class handling file parsing and Events processing
 //
 
 #ifndef CPUSCHEDULER_CPU_H
