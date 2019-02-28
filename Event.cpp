@@ -12,13 +12,13 @@ void Event::printEvent() const{
     std::cout << "At time " << time << ":" << std::endl;
     switch(type){
         case THREAD_ARRIVED:
-            std::cout <<"\tTHREAD_ARRIVED" << std::endl;
+            std::cout <<"    THREAD_ARRIVED" << std::endl;
             break;
     }
-    std::cout << "\t" << "Thread " << thread.getId() << " in process " << process.getPid() << "{" << process.getType() << "}" << std::endl;
+    std::cout << "    Thread " << thread.getId() << " in process " << process.getPid() << "{" << process.getType() << "}" << std::endl;
     switch(type){
         case THREAD_ARRIVED:
-            std::cout <<"\tTransitioned from NEW to READY" << std::endl;
+            std::cout <<"    Transitioned from NEW to READY" << std::endl << std::endl;
             break;
     }
 }
