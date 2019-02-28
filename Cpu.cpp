@@ -18,13 +18,11 @@ void Cpu::processInput(std::string inputFile){
     std::ifstream input(inputFile);
 
     int num_processes;
-    int thread_switch_overhead;
-    int process_switch_overhead;
 
     if(input.is_open()){ // File parsing
         input >> num_processes;
-        input >> thread_switch_overhead;
-        input >> process_switch_overhead;
+        input >> threadSwitchOverhead;
+        input >> processSwitchOverhead;
 
         for(int i = 0; i < num_processes; i++){
             int process_id;
@@ -76,14 +74,18 @@ void Cpu::processInput(std::string inputFile){
     }
 }
 
-void Cpu::processEvents() {
-
+void Cpu::processEventsFCFS() {
+    std::vector<Thread> threads;
     for(int i = 0; i < processes.size(); i++) {
         for (int j = 0; j < processes[i].getThreads().size(); j++) {
-            Event tempEvent(processes[i], processes[i].getThreads()[j], processes[i].getThreads()[j].getTime());
+            threads.push_back(processes[i].getThreads()[j]);
+            Event tempEvent(processes[i], processes[i].getThreads()[j], processes[i].getThreads()[j].getTime(), 0, 0);
             priorityEvents.emplace(tempEvent);
         }
     }
+
+    // Processes threads
+    int timer = 0;
 
     while(!priorityEvents.empty()){
         priorityEvents.top().printEvent();

@@ -15,10 +15,12 @@ class Cpu {
 private:
     std::vector<Process> processes;
     std::priority_queue<Event, std::vector<Event>, std::less<Event>> priorityEvents;
+    int threadSwitchOverhead;
+    int processSwitchOverhead;
 public:
     Cpu();
     void processInput(std::string filename);
-    void processEvents();
+    void processEventsFCFS();
 };
 
 

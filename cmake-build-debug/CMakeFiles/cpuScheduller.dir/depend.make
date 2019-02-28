@@ -23,6 +23,7 @@ CMakeFiles/cpuScheduller.dir/Process.cpp.obj: ../Process.h
 CMakeFiles/cpuScheduller.dir/Process.cpp.obj: ../Thread.h
 
 CMakeFiles/cpuScheduller.dir/Thread.cpp.obj: ../Burst.h
+CMakeFiles/cpuScheduller.dir/Thread.cpp.obj: ../Process.h
 CMakeFiles/cpuScheduller.dir/Thread.cpp.obj: ../Thread.cpp
 CMakeFiles/cpuScheduller.dir/Thread.cpp.obj: ../Thread.h
 

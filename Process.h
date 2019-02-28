@@ -16,7 +16,7 @@ private:
     std::vector <Thread> threads;
 
 public:
-    Process(){;};
+    Process(){pid = -1;};
     Process(int type, int pid);
     int getPid()const{return pid;};
     std::string getType() const;

@@ -12,6 +12,6 @@ int main(int argc, char *argv[]) {
             break;
     }
     cpu.processInput(file);
-    cpu.processEvents();
+    cpu.processEventsFCFS();
     return 1;
 }

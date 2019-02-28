@@ -18,11 +18,12 @@ private:
     int id;
 
 public:
-    Thread(){;};
+    Thread(){id = -1;};
     Thread(int t, int i, int p){timeArrival = t; state = NEW; id = i; pid = p;};
     void addBurst(Burst b);
     int getTime() const{return timeArrival;};
     int getId() const{return id;};
+    int getPId() const{return pid};
 };
 
 

@@ -10,12 +10,13 @@
 class Event {
 private:
     int time;
+    int otherThreads;
     enum Type{THREAD_ARRIVED, DISPATCHER_INVOKED, PROCESS_DISPATCH_COMPLETED, IO_BURST_COMPLETED, CPU_BURST_COMPLETED, THREAD_DISPATCH_COMPLETED, THREAD_COMPLETED};
     Type type;
     Thread thread;
     Process process;
 public:
-    Event(Process p, Thread th, int ti){process = p; thread = th; time = ti;};
+    Event(Process p, Thread th, int ti, int ot, int ty);
     void printEvent() const;
     bool operator<(const Event &temp) const;
 };
