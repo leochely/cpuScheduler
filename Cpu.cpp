@@ -45,7 +45,7 @@ void Cpu::processInput(std::string inputFile){
                 input >> thread_arrival_time;
                 input >> num_CPU_bursts;
 
-                Thread tempThread(thread_arrival_time, j);
+                Thread tempThread(thread_arrival_time, j, process_id);
 
                 for(int k = 0; k < num_CPU_bursts-1; k++){
                     int cpu, io;
