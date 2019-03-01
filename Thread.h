@@ -25,7 +25,9 @@ public:
     int getTime() const{return timeArrival;};
     int getId() const{return id;};
     int getPId() const{return pid;};
+    bool isReady(int timer){return (timer > readyTime);};
     Burst processBurst();
+    bool  isComppleted() {return (bursts.size() > 0);};
 };
 
 

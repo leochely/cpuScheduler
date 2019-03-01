@@ -50,7 +50,6 @@ void Cpu::processInput(std::string inputFile){
 
                     input >> cpu;
                     input >> io;
-                    // std::cout << cpu << " " << io << std::endl;
 
                     Burst tempBurst = Burst(cpu, io);
 
@@ -100,29 +99,51 @@ void Cpu::processEventsFCFS() {
             }
         }
 
+        for(int i = 0; i < blockedThreads.size(); i++) {
+            if (blockedThreads[i].isReady(timer)) {
+                readyThreads.push_back(blockedThreads[i]);
+                blockedThreads.erase(blockedThreads.begin() + i);
+            }
+        }
+
         if(nextDispatch == timer){
-            Event tempEvent(processes[readyThreads[0].getPId()], readyThreads[0], timer, readyThreads.size(), 1);
+            runningThread = readyThreads[0];
+            readyThreads.erase(readyThreads.begin());
+            Event tempEvent(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
             priorityEvents.emplace(tempEvent);
-            if(runningThread.getPId() != readyThreads[0].getPId()){
+
+            if(runningThread.getPId() != runningThread.getPId()){
                 nextDispatch += processSwitchOverhead;
-                Event dispatched(processes[readyThreads[0].getPId()], readyThreads[0], nextDispatch, readyThreads.size(), 2);
+                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2);
+                priorityEvents.emplace(dispatched);
             }
             else{
                 nextDispatch += threadSwitchOverhead;
-                Event dispatched(processes[readyThreads[0].getPId()], readyThreads[0], nextDispatch, readyThreads.size(), 3);
+                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 3);
+                priorityEvents.emplace(dispatched);
             }
 
-            runningThread = readyThreads[0];
-            readyThreads.erase(readyThreads.begin());
             Burst tempBurst = runningThread.processBurst();
 
             nextDispatch += tempBurst.get_cpu_time();
 
-            Event cpuDone(processes[readyThreads[0].getPId()], readyThreads[0], timer, readyThreads.size(), 4);
-            priorityEvents.emplace(tempEvent);
+            if(!runningThread.isComppleted()) {
+                Event cpuDone(processes[runningThread.getPId()], runningThread, timer + nextDispatch,
+                              readyThreads.size(), 4);
+                priorityEvents.emplace(cpuDone);
+            }
+            else{
+                Event done(processes[runningThread.getPId()], runningThread, timer + nextDispatch,
+                           readyThreads.size(), 6);
+                priorityEvents.emplace(done);
+            }
 
-            Event ioDone(processes[readyThreads[0].getPId()], readyThreads[0], timer, readyThreads.size(), 1);
-            priorityEvents.emplace(tempEvent);
+            if(tempBurst.get_io_time() > 0) {
+                Event ioDone(processes[runningThread.getPId()], runningThread,
+                             timer + nextDispatch + tempBurst.get_io_time(), readyThreads.size(), 5);
+                priorityEvents.emplace(ioDone);
+            }
+
         }
 
         timer++;
@@ -134,4 +155,5 @@ void Cpu::processEventsFCFS() {
         priorityEvents.pop();
     }
 
+    std::cout << "SIMULATION COMPLETED!" << std::endl << std::endl;
 }

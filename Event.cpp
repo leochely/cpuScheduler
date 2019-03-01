@@ -25,7 +25,16 @@ Event::Event(Process p, Thread th, int ti, int ot, int ty){
             break;
         case 3:
             type = THREAD_DISPATCH_COMPLETED;
-
+            break;
+        case 4:
+            type = CPU_BURST_COMPLETED;
+            break;
+        case 5:
+            type = IO_BURST_COMPLETED;
+            break;
+        case 6:
+            type = THREAD_COMPLETED;
+            break;
     }
 }
 
@@ -42,8 +51,17 @@ void Event::printEvent() const{
         case PROCESS_DISPATCH_COMPLETED:
             std::cout << "     PROCESS_DISPATCH_COMPLETED" << std::endl;
             break;
-        case 3:
+        case THREAD_DISPATCH_COMPLETED:
             std::cout << "     THREAD_DISPATCH_COMPLETED" << std::endl;
+            break;
+        case IO_BURST_COMPLETED:
+            std::cout << "     IO_BURST_COMPLETED" << std::endl;
+            break;
+        case CPU_BURST_COMPLETED:
+            std::cout << "     CPU_BURST_COMPLETED" << std::endl;
+            break;
+        case THREAD_COMPLETED:
+            std::cout << "     THREAD_COMPLETED" << std::endl;
             break;
     }
     std::cout << "    Thread " << thread.getId() << " in process " << process.getPid() << "{" << process.getType() << "}" << std::endl;
@@ -59,6 +77,15 @@ void Event::printEvent() const{
             break;
         case THREAD_DISPATCH_COMPLETED:
             std::cout << "    Transitioned from READY to RUNNING" << std::endl << std::endl;
+            break;
+        case IO_BURST_COMPLETED:
+            std::cout << "    Transitioned from BLOCKED to READY" << std::endl << std::endl;
+            break;
+        case CPU_BURST_COMPLETED:
+            std::cout << "    Transitioned from RUNNING to BLOCKED" << std::endl << std::endl;
+            break;
+        case THREAD_COMPLETED:
+            std::cout << "    Transitioned from RUNNING to EXIT" << std::endl << std::endl;
             break;
     }
 }
