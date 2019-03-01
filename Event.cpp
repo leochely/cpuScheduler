@@ -85,7 +85,7 @@ void Event::printEvent() const{
             std::cout << "    Transitioned from RUNNING to BLOCKED" << std::endl << std::endl;
             break;
         case THREAD_COMPLETED:
-            std::cout << "    Transitioned from RUNNING to EXIT" << std::endl << std::endl;
+            std::cout << "    Transitioned from RUNNING to EXIT" << std::endl;
             break;
     }
 }

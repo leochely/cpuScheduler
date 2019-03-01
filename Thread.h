@@ -27,7 +27,7 @@ public:
     int getPId() const{return pid;};
     bool isReady(int timer){return (timer > readyTime);};
     Burst processBurst();
-    bool  isComppleted() {return (bursts.size() > 0);};
+    bool  isCompleted() const{return (bursts.size() == 0);};
 };
 
 

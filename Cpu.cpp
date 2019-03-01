@@ -110,9 +110,6 @@ void Cpu::processEventsFCFS() {
             int oldPid = runningThread.getPId();
             runningThread = readyThreads[0];
 
-            Event tempEvent(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
-            priorityEvents.emplace(tempEvent);
-
             if(readyThreads[0].getPId() != oldPid){
                 nextDispatch += processSwitchOverhead;
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2);
@@ -130,7 +127,8 @@ void Cpu::processEventsFCFS() {
 
             nextDispatch += tempBurst.get_cpu_time();
 
-            if(!runningThread.isComppleted()) {
+            //End of CPU_BURST
+            if(!runningThread.isCompleted()) {
                 Event cpuDone(processes[runningThread.getPId()], runningThread, timer + nextDispatch,
                               readyThreads.size(), 4);
                 priorityEvents.emplace(cpuDone);
@@ -142,6 +140,7 @@ void Cpu::processEventsFCFS() {
                 continue;
             }
 
+            // End of IO_BURST
             if(tempBurst.get_io_time() > 0) {
                 Event ioDone(processes[runningThread.getPId()], runningThread,
                              timer + nextDispatch + tempBurst.get_io_time(), readyThreads.size(), 5);
@@ -150,7 +149,11 @@ void Cpu::processEventsFCFS() {
             }
             else
                 readyThreads.push_back(runningThread);
+
+            Event tempEvent(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
+            priorityEvents.emplace(tempEvent);
         }
+
         timer++;
     }
 
