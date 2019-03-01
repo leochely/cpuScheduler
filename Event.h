@@ -16,7 +16,7 @@ private:
     Thread thread;
     Process process;
 public:
-    Event(Process p, Thread th, int ti, int ot, int ty);
+    Event(Process process, Thread thread, int time, int otherThreads, int type);
     void printEvent() const;
     bool operator<(const Event &temp) const;
 };

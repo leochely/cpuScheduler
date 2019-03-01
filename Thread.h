@@ -12,6 +12,7 @@ private:
     int pid;
     int timeArrival;
     int timeEnd;
+    int readyTime;
     enum State{NEW, READY, RUNNING, BLOCKED, EXIT};
     State state;
     std::vector<Burst> bursts;
@@ -19,11 +20,12 @@ private:
 
 public:
     Thread(){id = -1;};
-    Thread(int t, int i, int p){timeArrival = t; state = NEW; id = i; pid = p;};
+    Thread(int t, int i, int p){timeArrival = t; state = NEW; id = i; pid = p; readyTime = timeArrival;};
     void addBurst(Burst b);
     int getTime() const{return timeArrival;};
     int getId() const{return id;};
     int getPId() const{return pid;};
+    Burst processBurst();
 };
 
 
