@@ -90,7 +90,7 @@ void Cpu::processEventsFCFS() {
     // Processes threads
     int timer = 0;
     int nextDispatch = 0;
-    while(!threads.empty()){
+    while(!threads.empty() || !readyThreads.empty() || !blockedThreads.empty()){
 
         for(int i = 0; i < threads.size(); i++){
             if(threads[i].getTime() == timer){
@@ -107,12 +107,13 @@ void Cpu::processEventsFCFS() {
         }
 
         if(nextDispatch == timer){
+            int oldPid = runningThread.getPId();
             runningThread = readyThreads[0];
-            readyThreads.erase(readyThreads.begin());
+
             Event tempEvent(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
             priorityEvents.emplace(tempEvent);
 
-            if(runningThread.getPId() != runningThread.getPId()){
+            if(readyThreads[0].getPId() != oldPid){
                 nextDispatch += processSwitchOverhead;
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2);
                 priorityEvents.emplace(dispatched);
@@ -122,6 +123,8 @@ void Cpu::processEventsFCFS() {
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 3);
                 priorityEvents.emplace(dispatched);
             }
+
+            readyThreads.erase(readyThreads.begin());
 
             Burst tempBurst = runningThread.processBurst();
 
@@ -136,16 +139,18 @@ void Cpu::processEventsFCFS() {
                 Event done(processes[runningThread.getPId()], runningThread, timer + nextDispatch,
                            readyThreads.size(), 6);
                 priorityEvents.emplace(done);
+                continue;
             }
 
             if(tempBurst.get_io_time() > 0) {
                 Event ioDone(processes[runningThread.getPId()], runningThread,
                              timer + nextDispatch + tempBurst.get_io_time(), readyThreads.size(), 5);
                 priorityEvents.emplace(ioDone);
+                blockedThreads.push_back(runningThread);
             }
-
+            else
+                readyThreads.push_back(runningThread);
         }
-
         timer++;
     }
 

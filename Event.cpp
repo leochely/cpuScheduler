@@ -46,22 +46,22 @@ void Event::printEvent() const{
             std::cout <<"    THREAD_ARRIVED" << std::endl;
             break;
         case DISPATCHER_INVOKED:
-            std::cout << "     DISPATCHER_INVOKED" << std::endl;
+            std::cout << "    DISPATCHER_INVOKED" << std::endl;
             break;
         case PROCESS_DISPATCH_COMPLETED:
-            std::cout << "     PROCESS_DISPATCH_COMPLETED" << std::endl;
+            std::cout << "    PROCESS_DISPATCH_COMPLETED" << std::endl;
             break;
         case THREAD_DISPATCH_COMPLETED:
-            std::cout << "     THREAD_DISPATCH_COMPLETED" << std::endl;
+            std::cout << "    THREAD_DISPATCH_COMPLETED" << std::endl;
             break;
         case IO_BURST_COMPLETED:
-            std::cout << "     IO_BURST_COMPLETED" << std::endl;
+            std::cout << "    IO_BURST_COMPLETED" << std::endl;
             break;
         case CPU_BURST_COMPLETED:
-            std::cout << "     CPU_BURST_COMPLETED" << std::endl;
+            std::cout << "    CPU_BURST_COMPLETED" << std::endl;
             break;
         case THREAD_COMPLETED:
-            std::cout << "     THREAD_COMPLETED" << std::endl;
+            std::cout << "    THREAD_COMPLETED" << std::endl;
             break;
     }
     std::cout << "    Thread " << thread.getId() << " in process " << process.getPid() << "{" << process.getType() << "}" << std::endl;
@@ -70,7 +70,7 @@ void Event::printEvent() const{
             std::cout <<"    Transitioned from NEW to READY" << std::endl << std::endl;
             break;
         case DISPATCHER_INVOKED:
-            std::cout << "    Selected from " << otherThreads << "; will run to completion of burst" << std::endl << std::endl;
+            std::cout << "    Selected from " << otherThreads << " threads; will run to completion of burst" << std::endl << std::endl;
             break;
         case PROCESS_DISPATCH_COMPLETED:
             std::cout << "    Transitioned from READY to RUNNING" << std::endl << std::endl;
