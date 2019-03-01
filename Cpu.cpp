@@ -76,6 +76,11 @@ void Cpu::processInput(std::string inputFile){
 
 void Cpu::processEventsFCFS() {
     std::vector<Thread> threads;
+    std::vector<Thread> readyThreads;
+    Process runningProcess;
+    Thread runningThread;
+
+
     for(int i = 0; i < processes.size(); i++) {
         for (int j = 0; j < processes[i].getThreads().size(); j++) {
             threads.push_back(processes[i].getThreads()[j]);
@@ -86,6 +91,83 @@ void Cpu::processEventsFCFS() {
 
     // Processes threads
     int timer = 0;
+    int idle = 0;
+    int lastProcessDispatch = 0;
+    int lastThreadDispatch = 0;
+    int runTime;
+    int ioTime;
+    bool processDispatching = true;
+    bool threadDispatching = false;
+    bool running = false;
+    bool blocked = false;
+    int processing = -1;
+
+    while(!threads.empty()){
+        if(processing > timer){
+            timer++;
+            continue;
+        }
+        running = false;
+        for(int i = 0; i < threads.size(); i++){
+            if(threads[i].getTime() == timer){
+                readyThreads.push_back(threads[i]);
+                threads.erase(threads.begin()+i);
+            }
+        }
+
+        if(runningProcess.getPid() == -1) {
+            if(readyThreads.empty()){
+                timer++;
+                idle++;
+                continue;
+            }
+            lastProcessDispatch = timer;
+            int time = 2147483647;
+            for (int i = 0; i < readyThreads.size(); i++) {
+                if(readyThreads[i].getTime() < time) {
+                    time = readyThreads[i].getTime();
+                    runningProcess = processes[readyThreads[i].getPId()];
+                    runningThread = readyThreads[i];
+                }
+            }
+            Event tempEvent(runningProcess, runningThread, timer, readyThreads.size(), 1);
+            priorityEvents.emplace(tempEvent);
+        }
+        else{
+            if(runningThread.getId() == -1){
+                if(readyThreads.empty()){
+                    timer++;
+                    idle++;
+                    continue;
+                }
+                for (int i = 0; i < readyThreads.size(); i++) {
+                    if(readyThreads[i].getPId() == runningProcess.getPid()){
+                        lastProcessDispatch = timer;
+                        runningThread = readyThreads[i];
+                        Event tempEvent(runningProcess, runningThread, timer, readyThreads.size(), 1);
+                        priorityEvents.emplace(tempEvent);
+                        continue;
+                    }
+                }
+            }
+            else{
+                int type;
+                if(lastProcessDispatch > lastThreadDispatch){
+                    processing = timer + processSwitchOverhead;
+                    type = 2;
+
+                }
+                else{
+                    processing = timer + threadSwitchOverhead;
+                    type = 3;
+                }
+                Event tempEvent(runningProcess, runningThread, timer, readyThreads.size(), type);
+                priorityEvents.emplace(tempEvent);
+            }
+        }
+        timer++;
+    }
+
 
     while(!priorityEvents.empty()){
         priorityEvents.top().printEvent();

@@ -23,7 +23,7 @@ public:
     void addBurst(Burst b);
     int getTime() const{return timeArrival;};
     int getId() const{return id;};
-    int getPId() const{return pid};
+    int getPId() const{return pid;};
 };
 
 

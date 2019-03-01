@@ -22,6 +22,10 @@ Event::Event(Process p, Thread th, int ti, int ot, int ty){
             break;
         case 2:
             type = PROCESS_DISPATCH_COMPLETED;
+            break;
+        case 3:
+            type = THREAD_DISPATCH_COMPLETED;
+
     }
 }
 
@@ -34,6 +38,13 @@ void Event::printEvent() const{
             break;
         case DISPATCHER_INVOKED:
             std::cout << "     DISPATCHER_INVOKED" << std::endl;
+            break;
+        case PROCESS_DISPATCH_COMPLETED:
+            std::cout << "     PROCESS_DISPATCH_COMPLETED" << std::endl;
+            break;
+        case 3:
+            std::cout << "     THREAD_DISPATCH_COMPLETED" << std::endl;
+            break;
     }
     std::cout << "    Thread " << thread.getId() << " in process " << process.getPid() << "{" << process.getType() << "}" << std::endl;
     switch(type){
@@ -42,6 +53,13 @@ void Event::printEvent() const{
             break;
         case DISPATCHER_INVOKED:
             std::cout << "    Selected from " << otherThreads << "; will run to completion of burst" << std::endl << std::endl;
+            break;
+        case PROCESS_DISPATCH_COMPLETED:
+            std::cout << "    Transitioned from READY to RUNNING" << std::endl << std::endl;
+            break;
+        case THREAD_DISPATCH_COMPLETED:
+            std::cout << "    Transitioned from READY to RUNNING" << std::endl << std::endl;
+            break;
     }
 }
 
