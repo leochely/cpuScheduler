@@ -110,7 +110,6 @@ void Cpu::processEventsFCFS() {
             runningThread = readyThreads[0];
             if(readyThreads[0].getPId() != oldPid){
                 nextDispatch += processSwitchOverhead;
-                std::cout<< readyThreads.size();
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2);
                 priorityEvents.emplace(dispatched);
             }
@@ -119,15 +118,14 @@ void Cpu::processEventsFCFS() {
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 3);
                 priorityEvents.emplace(dispatched);
             }
-
-            readyThreads.erase(readyThreads.begin());
-
             Burst tempBurst = runningThread.processBurst();
 
             // Updates next time dispatcher is invoked
             nextDispatch += tempBurst.get_cpu_time();
             Event tempEvent(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
             priorityEvents.emplace(tempEvent);
+
+            readyThreads.erase(readyThreads.begin());
 
             //End of CPU_BURST
             if(!runningThread.isCompleted()) {

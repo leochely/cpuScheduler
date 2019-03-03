@@ -12,7 +12,6 @@ Event::Event(Process p, Thread th, int ti, int ot, int ty){
     thread = th;
     time = ti;
     otherThreads = ot;
-
     switch(ty){
         case 0:
             type = THREAD_ARRIVED;
@@ -41,6 +40,7 @@ Event::Event(Process p, Thread th, int ti, int ot, int ty){
 //Displays the Event (only THREAD_ARRIVED) implemented so far
 void Event::printEvent() const{
     std::cout << "At time " << time << ":" << std::endl;
+
     switch(type){
         case THREAD_ARRIVED:
             std::cout <<"    THREAD_ARRIVED" << std::endl;
