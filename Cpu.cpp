@@ -132,16 +132,11 @@ void Cpu::processEventsFCFS() {
 
             //readyThreads content checking
             std::cout << timer << std::endl;
-            std::cout << blockedThreads.size() << std::endl;
-            for (auto &thread : readyThreads){
-
-                std::cout << thread.getPId() << " " << thread.getId() << std::endl;
-            }
-            std::cout << std::endl;
-
+            std::cout << threads.size() << std::endl;
+            std::cout << readyThreads.size() << std::endl;
+            std::cout << blockedThreads.size() << std::endl << std::endl;
 
             readyThreads.erase(readyThreads.begin());
-
 
             //End of CPU_BURST
             if(!runningThread.isCompleted()) {
