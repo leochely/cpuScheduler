@@ -79,10 +79,10 @@ void Cpu::processEventsFCFS() {
     std::vector<Thread> blockedThreads;
     Thread runningThread;
 
-    for (auto &processe : processes) {
-        for (int j = 0; j < processe.getThreads().size(); j++) {
-            threads.push_back(processe.getThreads()[j]);
-            Event tempEvent(processe, processe.getThreads()[j], processe.getThreads()[j].getTime(), 0, 0);
+    for (auto &process : processes) {
+        for (int j = 0; j < process.getThreads().size(); j++) {
+            threads.push_back(process.getThreads()[j]);
+            Event tempEvent(process, process.getThreads()[j], process.getThreads()[j].getTime(), 0, 0);
             priorityEvents.emplace(tempEvent);
         }
     }
@@ -95,6 +95,7 @@ void Cpu::processEventsFCFS() {
             if(threads[i].getTime() == timer){
                 readyThreads.push_back(threads[i]);
                 threads.erase(threads.begin()+i);
+                i--;
             }
         }
 
@@ -102,10 +103,14 @@ void Cpu::processEventsFCFS() {
             if (blockedThreads[i].isReady(timer)) {
                 readyThreads.push_back(blockedThreads[i]);
                 blockedThreads.erase(blockedThreads.begin() + i);
+                i--;
             }
         }
 
         if(nextDispatch == timer){
+            if (readyThreads.empty()){
+                continue;
+            }
             int oldPid = runningThread.getPId();
             runningThread = readyThreads[0];
             if(readyThreads[0].getPId() != oldPid){
@@ -118,14 +123,25 @@ void Cpu::processEventsFCFS() {
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 3);
                 priorityEvents.emplace(dispatched);
             }
-            Burst tempBurst = runningThread.processBurst();
+            Burst tempBurst = runningThread.processBurst(nextDispatch);
 
             // Updates next time dispatcher is invoked
             nextDispatch += tempBurst.get_cpu_time();
-            Event tempEvent(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
-            priorityEvents.emplace(tempEvent);
+            Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
+            priorityEvents.emplace(dispatch);
+
+            //readyThreads content checking
+            std::cout << timer << std::endl;
+            std::cout << blockedThreads.size() << std::endl;
+            for (auto &thread : readyThreads){
+
+                std::cout << thread.getPId() << " " << thread.getId() << std::endl;
+            }
+            std::cout << std::endl;
+
 
             readyThreads.erase(readyThreads.begin());
+
 
             //End of CPU_BURST
             if(!runningThread.isCompleted()) {

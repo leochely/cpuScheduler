@@ -10,9 +10,9 @@ void Thread::addBurst(Burst b){
     bursts.push_back(b);
 };
 
-Burst Thread::processBurst() {
+Burst Thread::processBurst(int time) {
     Burst temp = bursts[0];
-    readyTime += bursts[0].get_cpu_time() + bursts[0].get_io_time();
+    readyTime += time + bursts[0].get_cpu_time() + bursts[0].get_io_time();
     bursts.erase(bursts.begin());
     return temp;
 }
