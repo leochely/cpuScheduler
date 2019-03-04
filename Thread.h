@@ -19,13 +19,14 @@ private:
     int id;
 
 public:
-    Thread(){id = -1;};
-    Thread(int t, int i, int p){timeArrival = t; state = NEW; id = i; pid = p; readyTime = timeArrival;};
+    Thread();
+    Thread(int t, int i, int p);;
     void addBurst(Burst b);
     int getTime() const{return timeArrival;};
     int getId() const{return id;};
+    int getReadyTime() const{return readyTime;};
     int getPId() const{return pid;};
-    bool isReady(int timer){return (timer > readyTime);};
+    bool isReady(int timer) const;
     Burst processBurst(int time);
     bool  isCompleted() const{return (bursts.size() == 0);};
 };

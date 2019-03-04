@@ -38,11 +38,27 @@ queue
 functional
 -
 
+C:/Users/Leo/Projects/cpuScheduler/Event.cpp
+Event.h
+C:/Users/Leo/Projects/cpuScheduler/Event.h
+iostream
+-
+Thread.h
+C:/Users/Leo/Projects/cpuScheduler/Thread.h
+Process.h
+C:/Users/Leo/Projects/cpuScheduler/Process.h
+
 C:/Users/Leo/Projects/cpuScheduler/Event.h
 Process.h
 C:/Users/Leo/Projects/cpuScheduler/Process.h
 Thread.h
 C:/Users/Leo/Projects/cpuScheduler/Thread.h
+
+C:/Users/Leo/Projects/cpuScheduler/Process.cpp
+Process.h
+C:/Users/Leo/Projects/cpuScheduler/Process.h
+string
+-
 
 C:/Users/Leo/Projects/cpuScheduler/Process.h
 vector
@@ -52,9 +68,25 @@ C:/Users/Leo/Projects/cpuScheduler/Thread.h
 string
 -
 
+C:/Users/Leo/Projects/cpuScheduler/Thread.cpp
+iostream
+-
+Thread.h
+C:/Users/Leo/Projects/cpuScheduler/Thread.h
+
 C:/Users/Leo/Projects/cpuScheduler/Thread.h
 vector
 -
 Burst.h
 C:/Users/Leo/Projects/cpuScheduler/Burst.h
+
+C:/Users/Leo/Projects/cpuScheduler/main.cpp
+Cpu.h
+C:/Users/Leo/Projects/cpuScheduler/Cpu.h
+string
+-
+getopt.h
+-
+iostream
+-
 

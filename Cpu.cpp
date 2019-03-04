@@ -106,35 +106,38 @@ void Cpu::processEventsFCFS() {
                 i--;
             }
         }
-
         if(nextDispatch == timer){
             if (readyThreads.empty()){
+                nextDispatch++;
+		timer++;
+		if (timer == 109) std::cout << readyThreads.size();
                 continue;
             }
-            int oldPid = runningThread.getPId();
+
+	    int oldPid = runningThread.getPId();
             runningThread = readyThreads[0];
-            if(readyThreads[0].getPId() != oldPid){
-                nextDispatch += processSwitchOverhead;
+	    if(readyThreads[0].getPId() != oldPid){
+		nextDispatch += processSwitchOverhead;
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2);
                 priorityEvents.emplace(dispatched);
             }
             else{
-                nextDispatch += threadSwitchOverhead;
+		nextDispatch += threadSwitchOverhead;
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 3);
                 priorityEvents.emplace(dispatched);
             }
             Burst tempBurst = runningThread.processBurst(nextDispatch);
-
-            // Updates next time dispatcher is invoked
+	    // Updates next time dispatcher is invoked
             nextDispatch += tempBurst.get_cpu_time();
-            Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
-            priorityEvents.emplace(dispatch);
+	    Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
+	    priorityEvents.emplace(dispatch);
 
-            //readyThreads content checking
+            /* readyThreads content checking
             std::cout << timer << std::endl;
             std::cout << threads.size() << std::endl;
             std::cout << readyThreads.size() << std::endl;
             std::cout << blockedThreads.size() << std::endl << std::endl;
+	    */
 
             readyThreads.erase(readyThreads.begin());
 
@@ -158,12 +161,10 @@ void Cpu::processEventsFCFS() {
                 priorityEvents.emplace(ioDone);
                 blockedThreads.push_back(runningThread);
             }
-            else
+            else {
                 readyThreads.push_back(runningThread);
-
-
+            }
         }
-
         timer++;
     }
 
