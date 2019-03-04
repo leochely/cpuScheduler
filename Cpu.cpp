@@ -10,6 +10,7 @@
 #include "Process.h"
 #include "Thread.h"
 #include "Burst.h"
+#include <iomanip>
 
 Cpu::Cpu() = default;
 
@@ -106,6 +107,10 @@ void Cpu::processEventsFCFS() {
                 i--;
             }
         }
+
+	for(auto &thread : readyThreads){
+		thread.increaseWaitTime();
+	}
         if(nextDispatch == timer){
             if (readyThreads.empty()){
                 nextDispatch++;
@@ -142,13 +147,14 @@ void Cpu::processEventsFCFS() {
             readyThreads.erase(readyThreads.begin());
 
             //End of CPU_BURST
-            if(!runningThread.isCompleted()) {
-                Event threadDone(processes[runningThread.getPId()], runningThread, nextDispatch,
+            if(!runningThread.isCompleted(timer)) {
+       		Event threadDone(processes[runningThread.getPId()], runningThread, nextDispatch,
                               readyThreads.size(), 4);
                 priorityEvents.emplace(threadDone);
             }
             else{
-                Event burstDone(processes[runningThread.getPId()], runningThread, nextDispatch,
+                completedThreads.push_back(runningThread);
+		Event burstDone(processes[runningThread.getPId()], runningThread, nextDispatch,
                            readyThreads.size(), 5);
                 priorityEvents.emplace(burstDone);
                 continue;
@@ -175,4 +181,104 @@ void Cpu::processEventsFCFS() {
     }
 
     std::cout << "SIMULATION COMPLETED!" << std::endl << std::endl;
+}
+
+void Cpu::displayStats(){
+	int interactiveCount = 0;
+	double interactiveResponse = 0.0;
+	double interactiveTurnaround = 0.0;
+	int systemCount = 0;
+	double systemResponse = 0.0;
+	double systemTurnaround = 0.0;
+	int batchCount = 0;
+	double batchResponse = 0.0;
+	double batchTurnaround = 0.0;
+	int normalCount = 0;
+	double normalResponse = 0.0;
+	int normalTurnaround = 0.0;
+
+	for (auto &thread : completedThreads){
+		switch(processes[thread.getPId()].getType()){
+			case 'i':
+				interactiveCount++;
+				interactiveTurnaround += thread.getTurnaround();
+				break;
+			case's':
+				systemCount++;
+				systemTurnaround += thread.getTurnaround();
+				break;
+			case 'b':
+				batchCount++;
+				batchTurnaround += thread.getTurnaround();
+				break;
+			case 'n':
+				normalCount++;
+				normalTurnaround += thread.getTurnaround();
+				break;
+			default:
+				std::cout <<"Error" << std::endl;
+		}
+	}
+
+	if(interactiveCount > 0){
+		 interactiveTurnaround /= interactiveCount;
+	}
+	if(systemCount > 0){
+		systemTurnaround /= systemCount;
+	}
+        if(batchCount > 0){
+                batchTurnaround /= batchCount;
+        }
+        if(normalCount > 0){
+                normalTurnaround /= normalCount;
+        }
+
+	std::cout << "SYSTEM THREADS:" << std::endl;
+	std::cout << "    Total count:" << std::setw(32) << std::right << systemCount << std::endl;
+	std::cout << "    Average response time:" << std::setw(22) << std::right <<std::setprecision(4) << 12.34 << std::endl;
+	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(4) << systemTurnaround << std::endl << std::endl;
+
+	std::cout << "INTERACTIVE THREADS" << std::endl;
+	std::cout << "    Total count:" << std::setw(32) << std::right << interactiveCount << std::endl;
+	std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(4) << 12.34 << std::endl;
+	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(4) << interactiveTurnaround << std::endl << std::endl; 
+
+	std::cout << "NORMAL THREADS" << std::endl;
+	std::cout << "    Total count:" << std::setw(32) << std::right << normalCount << std::endl;
+        std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(4) << 12.34 << std::endl;
+        std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(4) << normalTurnaround << std::endl << std::endl; 
+
+	std::cout << "BACTH THREADS" << std::endl;
+	std::cout << "    Total count:" << std::setw(32) << std::right << batchCount << std::endl;
+        std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(4) << 12.34 << std::endl;
+        std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(4) << batchTurnaround << std::endl << std::endl; 
+}
+
+void Cpu::displayPerThread(){
+	for(auto &process : processes){
+		std::string type;
+		switch(process.getType()){
+			case 's':
+				type = "SYSTEM";
+				break;
+			case 'b':
+				type = "BATCH";
+				break;
+			case 'n':
+				type = "NORMAL";
+				break;
+			case 'i':
+				type = "INTERACTIVE";
+				break;
+		}
+		std::cout << "Process " << process.getPid() << " [" << type << "] :" << std::endl;
+		for(int i = 0; i < process.getThreads().size(); i++){
+			for(auto &thread : completedThreads){
+				if(process.getPid() == thread.getPId() && thread.getId() == i){
+					std::cout << "    Thread " << thread.getId() << std::endl;
+				}
+			}
+		}
+		std::cout << std::endl;
+	}
 }

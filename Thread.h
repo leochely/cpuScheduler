@@ -13,6 +13,7 @@ private:
     int timeArrival;
     int timeEnd;
     int readyTime;
+    int waitTime;
     enum State{NEW, READY, RUNNING, BLOCKED, EXIT};
     State state;
     std::vector<Burst> bursts;
@@ -28,7 +29,11 @@ public:
     int getPId() const{return pid;};
     bool isReady(int timer) const;
     Burst processBurst(int time);
-    bool  isCompleted() const{return (bursts.size() == 0);};
+    bool isCompleted(int timer);
+    int getTurnaround();
+    int getTimeArrival(){return timeArrival;};
+    void increaseWaitTime();
+    int getWaitTime(){return waitTime;};
 };
 
 

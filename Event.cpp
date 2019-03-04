@@ -40,6 +40,22 @@ Event::Event(Process p, Thread th, int ti, int ot, int ty){
 //Displays the Event (only THREAD_ARRIVED) implemented so far
 void Event::printEvent() const{
     std::cout << "At time " << time << ":" << std::endl;
+    std::string processType;
+
+    switch(process.getType()){
+	case 's':
+		processType = "SYSTEM";
+		break;
+	case 'i':
+		processType = "INTERACTIVE";
+		break;
+	case 'b':
+		processType = "BATCH";
+		break;
+	case 'n':
+		processType = "NROMAL";
+		break;
+    }
 
     switch(type){
         case THREAD_ARRIVED:
@@ -64,7 +80,7 @@ void Event::printEvent() const{
             std::cout << "    THREAD_COMPLETED" << std::endl;
             break;
     }
-    std::cout << "    Thread " << thread.getId() << " in process " << process.getPid() << " {" << process.getType() << "}" << std::endl;
+    std::cout << "    Thread " << thread.getId() << " in process " << process.getPid() << " {" << processType << "}" << std::endl;
     switch(type){
         case THREAD_ARRIVED:
             std::cout <<"    Transitioned from NEW to READY" << std::endl << std::endl;

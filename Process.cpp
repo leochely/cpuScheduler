@@ -27,20 +27,19 @@ void Process::addThread(Thread thread) {
   threads.push_back(thread);
 }
 
-std::string Process::getType() const {
+char Process::getType() const {
     switch(type){
         case SYSTEM:
-            return "SYSTEM";
+            return 's';
             break;
         case INTERACTIVE:
-            return "INTERACTIVE";
+            return 'i';
             break;
         case NORMAL:
-            return "NORMAL";
+            return 'n';
             break;
         case BATCH:
-            return "BATCH";
+            return 'b';
             break;
     }
-    return "test";
 }

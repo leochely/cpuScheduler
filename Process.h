@@ -19,7 +19,7 @@ public:
     Process(){pid = -1;};
     Process(int type, int pid);
     int getPid()const{return pid;};
-    std::string getType() const;
+    char getType() const;
     void addThread(Thread thread);
     std::vector<Thread> getThreads(){return threads;};
 };
