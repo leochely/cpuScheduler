@@ -16,6 +16,8 @@ private:
     double waitTime;
     int cpu;
     int io;
+    int responseTime;
+    bool hasStarted;
     enum State{NEW, READY, RUNNING, BLOCKED, EXIT};
     State state;
     std::vector<Burst> bursts;
@@ -37,7 +39,8 @@ public:
     int getCpuTime() const{return cpu;};
     int getIoTime() const{return io;};
     int getEndTime() const{return timeEnd;};
-    int getWaitTime() const;
+    int getResponseTime() const{return responseTime;};
+    void setResponseTime(int time);
 };
 
 

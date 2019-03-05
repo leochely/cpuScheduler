@@ -120,6 +120,7 @@ void Cpu::processEventsFCFS() {
 
 	        int oldPid = runningThread.getPId();
             runningThread = readyThreads[0];
+
 	        if(readyThreads[0].getPId() != oldPid){
 		    nextDispatch += processSwitchOverhead;
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2);
@@ -130,6 +131,8 @@ void Cpu::processEventsFCFS() {
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 3);
                 priorityEvents.emplace(dispatched);
             }
+
+            runningThread.setResponseTime(nextDispatch);
             Burst tempBurst = runningThread.processBurst(nextDispatch);
 
             // Updates next time dispatcher is invoked
@@ -201,22 +204,22 @@ void Cpu::displayStats(){
 			case 'i':
 				interactiveCount++;
 				interactiveTurnaround += thread.getTurnaround();
-				interactiveResponse += thread.getWaitTime();
+				interactiveResponse += thread.getResponseTime();
 				break;
 			case's':
 				systemCount++;
 				systemTurnaround += thread.getTurnaround();
-				systemResponse += thread.getWaitTime();
+				systemResponse += thread.getResponseTime();
 				break;
 			case 'b':
 				batchCount++;
 				batchTurnaround += thread.getTurnaround();
-				batchResponse += thread.getWaitTime();
+				batchResponse += thread.getResponseTime();
 				break;
 			case 'n':
 				normalCount++;
 				normalTurnaround += thread.getTurnaround();
-				normalResponse += thread.getWaitTime();
+				normalResponse += thread.getResponseTime();
 				break;
 			default:
 				std::cout <<"Error" << std::endl;

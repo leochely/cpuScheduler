@@ -35,9 +35,12 @@ int Thread::getTurnaround() const{
 	return (timeEnd - timeArrival);
 }
 
-int Thread::getWaitTime() const {
-    return (getTurnaround() - cpu - io);
+void Thread::setResponseTime(int time) {
+    if(!hasStarted){
+        responseTime = time - timeArrival;
+        hasStarted = true;
+    }
 }
 
-Thread::Thread(int t, int i, int p) {timeArrival = t; state = NEW; id = i; pid = p; readyTime = timeArrival; cpu=0; io=0; waitTime = 0.0;}
+Thread::Thread(int t, int i, int p) {timeArrival = t; state = NEW; id = i; pid = p; readyTime = timeArrival; cpu=0; io=0; waitTime = 0.0; hasStarted = false;}
 Thread::Thread(){pid = -1; id = -1;};
