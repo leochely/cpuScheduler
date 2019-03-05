@@ -20,6 +20,8 @@ bool Thread::isCompleted(int timer){
 
 Burst Thread::processBurst(int time) {
     Burst temp = bursts[0];
+    cpu += temp.get_cpu_time();
+    io += temp.get_io_time();
     readyTime = time + bursts[0].get_cpu_time() + bursts[0].get_io_time();
     bursts.erase(bursts.begin());
     return temp;
@@ -37,5 +39,5 @@ void Thread::increaseWaitTime(){
 	waitTime++;
 }
 
-Thread::Thread(int t, int i, int p) {timeArrival = t; state = NEW; id = i; pid = p; readyTime = timeArrival;}
+Thread::Thread(int t, int i, int p) {timeArrival = t; state = NEW; id = i; pid = p; readyTime = timeArrival; cpu=0; io=0; waitTime = 0.0;}
 Thread::Thread(){pid = -1; id = -1;};

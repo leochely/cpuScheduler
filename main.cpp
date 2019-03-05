@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     Cpu cpu;
     cpu.processInput(file);
     cpu.processEventsFCFS();
-    cpu.displayStats();
     cpu.displayPerThread();
+    cpu.displayStats();
     return 1;
 }

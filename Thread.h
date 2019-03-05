@@ -13,7 +13,9 @@ private:
     int timeArrival;
     int timeEnd;
     int readyTime;
-    int waitTime;
+    double waitTime;
+    int cpu;
+    int io;
     enum State{NEW, READY, RUNNING, BLOCKED, EXIT};
     State state;
     std::vector<Burst> bursts;
@@ -33,6 +35,10 @@ public:
     int getTurnaround();
     int getTimeArrival(){return timeArrival;};
     void increaseWaitTime();
+    void correctWait(){waitTime--;};
+    int getCpuTime(){return cpu;};
+    int getIoTime(){return io;};
+    int getEndTime(){return timeEnd;};
     int getWaitTime(){return waitTime;};
 };
 
