@@ -4,7 +4,6 @@
 #include <iostream>
 
 int main(int argc, char **argv) {
-    int c;
     std::string file;
     int verbose = 0;
     int perThread = 0;
@@ -42,6 +41,10 @@ int main(int argc, char **argv) {
     }
     else{
 	file = argv[argc-1];
+	if(file == "./simulator"){
+		std::cout << "Please enter a file name" << std::endl;
+		return -1;
+	}
 	Cpu cpu;
     	cpu.processInput(file);
     	cpu.processEventsFCFS();
