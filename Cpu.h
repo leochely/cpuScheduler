@@ -25,6 +25,7 @@ public:
     void processInput(std::string filename);
     void processEventsFCFS();
     void displayStats();
+    void verbose();
     void displayPerThread();
 };
 

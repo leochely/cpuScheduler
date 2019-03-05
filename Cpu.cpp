@@ -169,17 +169,19 @@ void Cpu::processEventsFCFS() {
         }
         timer++;
     }
+}
 
-
+void Cpu::verbose(){
     while(!priorityEvents.empty()){
         priorityEvents.top().printEvent();
         priorityEvents.pop();
     }
-
-    std::cout << "SIMULATION COMPLETED!" << std::endl << std::endl;
 }
 
 void Cpu::displayStats(){
+
+	std::cout << "SIMULATION COMPLETED" << std::endl << std::endl;
+
 	int interactiveCount = 0;
 	double interactiveResponse = 0.0;
 	double interactiveTurnaround = 0.0;
@@ -191,38 +193,38 @@ void Cpu::displayStats(){
 	double batchTurnaround = 0.0;
 	int normalCount = 0;
 	double normalResponse = 0.0;
-	int normalTurnaround = 0.0;
-    int endTime = -1;
-    int io = 0;
-    int cpu = 0;
+	double normalTurnaround = 0.0;
+    	int endTime = -1;
+    	int io = 0;
+    	int cpu = 0;
 
 	for (auto &thread : completedThreads){
         cpu += thread.getCpuTime();
         io += thread.getIoTime();
         if( endTime < thread.getEndTime()) endTime = thread.getEndTime();
         switch(processes[thread.getPId()].getType()){
-			case 'i':
-				interactiveCount++;
-				interactiveTurnaround += thread.getTurnaround();
-				interactiveResponse += thread.getResponseTime();
-				break;
-			case's':
-				systemCount++;
-				systemTurnaround += thread.getTurnaround();
-				systemResponse += thread.getResponseTime();
-				break;
-			case 'b':
-				batchCount++;
-				batchTurnaround += thread.getTurnaround();
-				batchResponse += thread.getResponseTime();
-				break;
-			case 'n':
-				normalCount++;
-				normalTurnaround += thread.getTurnaround();
-				normalResponse += thread.getResponseTime();
-				break;
-			default:
-				std::cout <<"Error" << std::endl;
+		case 'i':
+			interactiveCount++;
+			interactiveTurnaround += thread.getTurnaround();
+			interactiveResponse += thread.getResponseTime();
+			break;
+		case's':
+			systemCount++;
+			systemTurnaround += thread.getTurnaround();
+			systemResponse += thread.getResponseTime();
+			break;
+		case 'b':
+			batchCount++;
+			batchTurnaround += thread.getTurnaround();
+			batchResponse += thread.getResponseTime();
+			break;
+		case 'n':
+			normalCount++;
+			normalTurnaround += thread.getTurnaround();
+			normalResponse += thread.getResponseTime();
+			break;
+		default:
+			std::cout <<"Error" << std::endl;
 		}
 	}
 
@@ -234,14 +236,14 @@ void Cpu::displayStats(){
 		systemTurnaround /= systemCount;
 		systemResponse /= systemCount;
 	}
-	if(batchCount > 0){
-        batchTurnaround /= batchCount;
-        batchResponse /= batchCount;
+		if(batchCount > 0){
+        	batchTurnaround /= batchCount;
+        	batchResponse /= batchCount;
 	}
-    if(normalCount > 0){
-        normalTurnaround /= normalCount;
-        normalResponse /= normalCount;
-    }
+	if(normalCount > 0){
+        	normalTurnaround /= normalCount;
+        	normalResponse /= normalCount;
+    	}
 
     std::cout << std::fixed;
 	std::cout << "SYSTEM THREADS:" << std::endl;

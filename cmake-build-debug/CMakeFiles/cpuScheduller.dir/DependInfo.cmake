@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Leo/Projects/cpuScheduler/Burst.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Burst.cpp.obj"
-  "C:/Users/Leo/Projects/cpuScheduler/Cpu.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Cpu.cpp.obj"
-  "C:/Users/Leo/Projects/cpuScheduler/Event.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Event.cpp.obj"
-  "C:/Users/Leo/Projects/cpuScheduler/Process.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Process.cpp.obj"
-  "C:/Users/Leo/Projects/cpuScheduler/Thread.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Thread.cpp.obj"
-  "C:/Users/Leo/Projects/cpuScheduler/main.cpp" "C:/Users/Leo/Projects/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/main.cpp.obj"
+  "/Users/leo/cpuScheduler/Burst.cpp" "/Users/leo/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Burst.cpp.o"
+  "/Users/leo/cpuScheduler/Cpu.cpp" "/Users/leo/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Cpu.cpp.o"
+  "/Users/leo/cpuScheduler/Event.cpp" "/Users/leo/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Event.cpp.o"
+  "/Users/leo/cpuScheduler/Process.cpp" "/Users/leo/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Process.cpp.o"
+  "/Users/leo/cpuScheduler/Thread.cpp" "/Users/leo/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/Thread.cpp.o"
+  "/Users/leo/cpuScheduler/main.cpp" "/Users/leo/cpuScheduler/cmake-build-debug/CMakeFiles/cpuScheduller.dir/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
