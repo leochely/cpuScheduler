@@ -13,8 +13,8 @@
 
 class Cpu {
 private:
-    int endTime;
     int idle;
+    int endTime;
     std::vector<Thread> completedThreads;
     std::vector<Process> processes;
     std::priority_queue<Event, std::vector<Event>, std::less<Event>> priorityEvents;

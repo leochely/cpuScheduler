@@ -36,10 +36,10 @@ public:
     int getTimeArrival(){return timeArrival;};
     void increaseWaitTime();
     void correctWait(){waitTime--;};
-    int getCpuTime(){return cpu;};
-    int getIoTime(){return io;};
-    int getEndTime(){return timeEnd;};
-    int getWaitTime(){return waitTime;};
+    int getCpuTime() const{return cpu;};
+    int getIoTime() const{return io;};
+    int getEndTime() const{return timeEnd;};
+    int getWaitTime() const{return waitTime;};
 };
 
 

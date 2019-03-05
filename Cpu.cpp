@@ -190,25 +190,24 @@ void Cpu::displayStats(){
 	int normalCount = 0;
 	double normalResponse = 0.0;
 	int normalTurnaround = 0.0;
-    endTime = 0;
+    int endTime = -1;
     int io = 0;
     int cpu = 0;
+
 	for (auto &thread : completedThreads){
         cpu += thread.getCpuTime();
         io += thread.getIoTime();
-        if(endTime < thread.getEndTime()) endTime = thread.getWaitTime();
-		switch(processes[thread.getPId()].getType()){
+        if( endTime < thread.getEndTime()) endTime = thread.getEndTime();
+        switch(processes[thread.getPId()].getType()){
 			case 'i':
 				interactiveCount++;
 				interactiveTurnaround += thread.getTurnaround();
 				interactiveResponse += thread.getWaitTime();
-                std::cout << thread.getWaitTime() << std::endl;
 				break;
 			case's':
 				systemCount++;
 				systemTurnaround += thread.getTurnaround();
 				systemResponse += thread.getWaitTime();
-				std::cout << thread.getWaitTime() << std::endl;
 				break;
 			case 'b':
 				batchCount++;
@@ -286,7 +285,6 @@ void Cpu::displayPerThread(){
 				type = "INTERACTIVE";
 				break;
 		}
-		endTime = 0;
 		std::cout << "Process " << process.getPid() << " [" << type << "] :" << std::endl;
 		for(int i = 0; i < process.getThreads().size(); i++){
 			for(auto &thread : completedThreads){
@@ -302,4 +300,5 @@ void Cpu::displayPerThread(){
 		}
 		std::cout << std::endl;
 	}
+	std::cout << std::endl;
 }
