@@ -92,6 +92,7 @@ void Cpu::processEventsFCFS() {
     int timer = 0;
     int nextDispatch = 0;
     idle = 0;
+
     while(!threads.empty() || !readyThreads.empty() || !blockedThreads.empty()){
         for(int i = 0; i < threads.size(); i++){
             if(threads[i].getTime() == timer){
@@ -109,17 +110,14 @@ void Cpu::processEventsFCFS() {
             }
         }
 
-        for(auto &thread : readyThreads){
-            thread.increaseWaitTime();
-        }
         if(nextDispatch == timer){
             if (readyThreads.empty()){
                 nextDispatch++;
                 idle++;
-		    timer++;
-		    continue;
+		        timer++;
+		        continue;
             }
-            runningThread.correctWait();
+
 	        int oldPid = runningThread.getPId();
             runningThread = readyThreads[0];
 	        if(readyThreads[0].getPId() != oldPid){
@@ -133,10 +131,11 @@ void Cpu::processEventsFCFS() {
                 priorityEvents.emplace(dispatched);
             }
             Burst tempBurst = runningThread.processBurst(nextDispatch);
-	    // Updates next time dispatcher is invoked
+
+            // Updates next time dispatcher is invoked
             nextDispatch += tempBurst.get_cpu_time();
-	    Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
-	    priorityEvents.emplace(dispatch);
+	        Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
+	        priorityEvents.emplace(dispatch);
 
             readyThreads.erase(readyThreads.begin());
 
@@ -241,31 +240,36 @@ void Cpu::displayStats(){
         normalResponse /= normalCount;
     }
 
+    std::cout << std::fixed;
 	std::cout << "SYSTEM THREADS:" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << systemCount << std::endl;
-	std::cout << "    Average response time:" << std::setw(22) << std::right <<std::setprecision(4) << systemResponse << std::endl;
-	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(4) << systemTurnaround << std::endl << std::endl;
+	std::cout << "    Average response time:" << std::setw(22) << std::right <<std::setprecision(2) << systemResponse << std::endl;
+	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << systemTurnaround << std::endl << std::endl;
 
 	std::cout << "INTERACTIVE THREADS" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << interactiveCount << std::endl;
-	std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(4) << interactiveResponse << std::endl;
-	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(4) << interactiveTurnaround << std::endl << std::endl; 
+	std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(2) << interactiveResponse << std::endl;
+	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << interactiveTurnaround << std::endl << std::endl;
 
 	std::cout << "NORMAL THREADS" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << normalCount << std::endl;
-	std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(4) << normalResponse << std::endl;
-	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(4) << normalTurnaround << std::endl << std::endl;
+	std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(2) << normalResponse << std::endl;
+	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << normalTurnaround << std::endl << std::endl;
 
-	std::cout << "BACTH THREADS" << std::endl;
+	std::cout << "BATCH THREADS" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << batchCount << std::endl;
-	std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(4) << batchResponse << std::endl;
-	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(4) << batchTurnaround << std::endl << std::endl;
+	std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(2) << batchResponse << std::endl;
+	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << batchTurnaround << std::endl << std::endl;
 
+	int dispatch = endTime - cpu - idle;
 	std::cout << "Total elapsed time: " << std::setw(28) << std::right << endTime << std::endl;
     std::cout << "Total service time: " << std::setw(28) << std::right << cpu << std::endl;
     std::cout << "Total I/O time: " << std::setw(32) << std::right << io << std::endl;
-    std::cout << "Total dispatch time: " << std::setw(27) << std::right << endTime - cpu - idle << std::endl;
-    std::cout << "Total idle time: " << std::setw(31) << std::right << idle << std::endl;
+    std::cout << "Total dispatch time: " << std::setw(27) << std::right << dispatch << std::endl;
+    std::cout << "Total idle time: " << std::setw(31) << std::right << idle << std::endl << std::endl;
+
+    std::cout << "CPU utilization: " << std::setw(30) << (double) (endTime - idle) / endTime *100 << "%" << std::endl;
+    std::cout << "CPU utilization: " << std::setw(30) << (double) (endTime - idle - dispatch) / endTime *100 << "%" << std::endl;
 }
 
 void Cpu::displayPerThread(){

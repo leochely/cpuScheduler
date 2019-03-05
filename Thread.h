@@ -32,14 +32,12 @@ public:
     bool isReady(int timer) const;
     Burst processBurst(int time);
     bool isCompleted(int timer);
-    int getTurnaround();
-    int getTimeArrival(){return timeArrival;};
-    void increaseWaitTime();
-    void correctWait(){waitTime--;};
+    int getTurnaround() const;
+    int getTimeArrival() const {return timeArrival;};
     int getCpuTime() const{return cpu;};
     int getIoTime() const{return io;};
     int getEndTime() const{return timeEnd;};
-    int getWaitTime() const{return waitTime;};
+    int getWaitTime() const;
 };
 
 

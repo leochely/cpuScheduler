@@ -31,12 +31,12 @@ bool Thread::isReady(int timer) const{
 	return (timer == readyTime);
 }
 
-int Thread::getTurnaround(){
+int Thread::getTurnaround() const{
 	return (timeEnd - timeArrival);
 }
 
-void Thread::increaseWaitTime(){
-	waitTime++;
+int Thread::getWaitTime() const {
+    return (getTurnaround() - cpu - io);
 }
 
 Thread::Thread(int t, int i, int p) {timeArrival = t; state = NEW; id = i; pid = p; readyTime = timeArrival; cpu=0; io=0; waitTime = 0.0;}
