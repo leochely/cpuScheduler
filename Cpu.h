@@ -24,6 +24,9 @@ public:
     Cpu();
     void processInput(std::string filename);
     void processEventsFCFS();
+    void processEventsRR();
+    void processEventsPriority();
+    void processEventsCustom();
     void displayStats();
     void verbose();
     void displayPerThread();
