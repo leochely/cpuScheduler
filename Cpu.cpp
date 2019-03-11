@@ -375,34 +375,37 @@ void Cpu::processEventsCustom() {
             Burst tempBurst = runningThread.processBurst(nextDispatch);
 
             // Updates next time dispatcher is invoked
-            nextDispatch += tempBurst.get_cpu_time();
-            Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
-            priorityEvents.emplace(dispatch);
+            if (tempBurst.get_cpu_time() <= timeSlice) {
+                nextDispatch += tempBurst.get_cpu_time();
+                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
+                priorityEvents.emplace(dispatch);
 
-            readyThreads.erase(readyThreads.begin());
+                readyThreads.erase(readyThreads.begin());
 
-            //End of CPU_BURST
-            if(!runningThread.isCompleted(nextDispatch)) {
-                Event threadDone(processes[runningThread.getPId()], runningThread, nextDispatch,
-                                 readyThreads.size(), 4);
-                priorityEvents.emplace(threadDone);
+                //End of CPU_BURST
+                if (!runningThread.isCompleted(nextDispatch)) {
+                    Event threadDone(processes[runningThread.getPId()], runningThread, nextDispatch,
+                                     readyThreads.size(), 4);
+                    priorityEvents.emplace(threadDone);
+                } else {
+                    completedThreads.push_back(runningThread);
+                    Event burstDone(processes[runningThread.getPId()], runningThread, nextDispatch,
+                                    readyThreads.size(), 5);
+                    priorityEvents.emplace(burstDone);
+                    continue;
+                }
+                // End of IO_BURST
+                if (tempBurst.get_io_time() > 0) {
+                    Event ioDone(processes[runningThread.getPId()], runningThread,
+                                 nextDispatch + tempBurst.get_io_time(), readyThreads.size(), 6);
+                    priorityEvents.emplace(ioDone);
+                    blockedThreads.push_back(runningThread);
+                } else {
+                    readyThreads.push_back(runningThread);
+                }
             }
             else{
-                completedThreads.push_back(runningThread);
-                Event burstDone(processes[runningThread.getPId()], runningThread, nextDispatch,
-                                readyThreads.size(), 5);
-                priorityEvents.emplace(burstDone);
-                continue;
-            }
-
-            // End of IO_BURST
-            if(tempBurst.get_io_time() > 0) {
-                Event ioDone(processes[runningThread.getPId()], runningThread,
-                             nextDispatch + tempBurst.get_io_time(), readyThreads.size(), 6);
-                priorityEvents.emplace(ioDone);
-                blockedThreads.push_back(runningThread);
-            }
-            else {
+                nextDispatch += timeSlice;
                 readyThreads.push_back(runningThread);
             }
         }
