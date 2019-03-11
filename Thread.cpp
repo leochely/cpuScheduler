@@ -18,6 +18,22 @@ bool Thread::isCompleted(int timer){
 	else return false; 
 }
 
+Burst Thread::processBurstRR(int time, int slice) {
+    Burst temp = bursts[0];
+    if (temp.get_cpu_time() <= slice){
+        cpu += temp.get_cpu_time();
+        io += temp.get_io_time();
+        readyTime = time + bursts[0].get_cpu_time() + bursts[0].get_io_time();
+        bursts.erase(bursts.begin());
+    }
+    else{
+        cpu += slice;
+        readyTime = time + slice;
+        bursts[0].partialBurst(slice);
+    }
+    return temp;
+}
+
 Burst Thread::processBurst(int time) {
     Burst temp = bursts[0];
     cpu += temp.get_cpu_time();

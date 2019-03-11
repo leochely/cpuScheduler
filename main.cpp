@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
 
 		int option_index = 0;
 
-		int c = getopt_long (argc, argv, "vth", long_options, &option_index);
+		int c = getopt_long (argc, argv, "vtha:", long_options, &option_index);
 
 		if(c == -1)
 			break;
@@ -38,7 +38,11 @@ int main(int argc, char **argv) {
 		   		perThread= 1;
 				break;
 			case 'a':
-				algorithm = "%s";
+			    algo = 1;
+				algorithm = optarg;
+				break;
+            default:
+                abort();
 		}
     }
     if(help){
@@ -59,6 +63,7 @@ int main(int argc, char **argv) {
 	    else if (algorithm == "PRIORITY") cpu.processEventsPriority();
 	    else if (algorithm == "CUSTOM") cpu.processEventsCustom();
 	    else{
+	        std::cout << algorithm << std::endl;
 	        std::cout << "Invalid algorithm name" << std::endl;
 	        return -1;
 	    }

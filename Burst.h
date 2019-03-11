@@ -13,8 +13,9 @@ private:
 
 public:
     Burst(int cpu, int io);
-    int get_cpu_time();
-    int get_io_time();
+    int get_cpu_time() const;
+    int get_io_time() const;
+    void partialBurst(int slice){cpu_time -= slice;};
 };
 
 

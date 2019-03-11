@@ -33,6 +33,7 @@ public:
     int getPId() const{return pid;};
     bool isReady(int timer) const;
     Burst processBurst(int time);
+    Burst processBurstRR(int time, int slice);
     bool isCompleted(int timer);
     int getTurnaround() const;
     int getTimeArrival() const {return timeArrival;};

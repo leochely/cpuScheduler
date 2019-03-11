@@ -10,10 +10,10 @@ Burst::Burst(int cpu, int io){
     io_time = io;
 }
 
-int Burst::get_cpu_time() {
+int Burst::get_cpu_time() const{
     return cpu_time;
 }
 
-int Burst::get_io_time() {
+int Burst::get_io_time() const{
     return io_time;
 }

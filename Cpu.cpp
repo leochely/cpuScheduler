@@ -74,6 +74,7 @@ void Cpu::processInput(std::string inputFile){
     }
 }
 
+// FIRST COME FIRST SERVED //
 void Cpu::processEventsFCFS() {
     std::vector<Thread> threads;
     std::vector<Thread> readyThreads;
@@ -312,8 +313,20 @@ void Cpu::displayPerThread(){
 	std::cout << std::endl;
 }
 
+// CUSTOM EVENT //
 void Cpu::processEventsCustom() {
-    int timeSlice = 3;
+}
+
+
+// PRIORITY //
+void Cpu::processEventsPriority() {
+
+}
+
+
+// ROUND ROBIN //
+void Cpu::processEventsRR() {
+
     std::vector<Thread> threads;
     std::vector<Thread> readyThreads;
     std::vector<Thread> blockedThreads;
@@ -329,10 +342,11 @@ void Cpu::processEventsCustom() {
 
     // Processes threads
     int timer = 0;
+    int timeSlice = 3;
     int nextDispatch = 0;
     idle = 0;
 
-    while(!threads.empty() || !readyThreads.empty() || !blockedThreads.empty()){
+    while((!threads.empty() || !readyThreads.empty() || !blockedThreads.empty())){
         for(int i = 0; i < threads.size(); i++){
             if(threads[i].getTime() == timer){
                 readyThreads.push_back(threads[i]);
@@ -372,7 +386,7 @@ void Cpu::processEventsCustom() {
             }
 
             runningThread.setResponseTime(nextDispatch);
-            Burst tempBurst = runningThread.processBurst(nextDispatch);
+            Burst tempBurst = runningThread.processBurstRR(nextDispatch, timeSlice);
 
             // Updates next time dispatcher is invoked
             if (tempBurst.get_cpu_time() <= timeSlice) {
@@ -405,18 +419,14 @@ void Cpu::processEventsCustom() {
                 }
             }
             else{
+                std::cout << timer << " test" << std::endl;
                 nextDispatch += timeSlice;
+                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
+                priorityEvents.emplace(dispatch);
                 readyThreads.push_back(runningThread);
+                readyThreads.erase(readyThreads.begin());
             }
         }
         timer++;
     }
-}
-
-void Cpu::processEventsPriority() {
-
-}
-
-void Cpu::processEventsRR() {
-
 }
