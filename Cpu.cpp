@@ -181,7 +181,7 @@ void Cpu::verbose(){
 
 void Cpu::displayStats(){
 
-	std::cout << "SIMULATION COMPLETED" << std::endl << std::endl;
+	std::cout << "SIMULATION COMPLETED!" << std::endl << std::endl;
 
 	int interactiveCount = 0;
 	double interactiveResponse = 0.0;
@@ -249,23 +249,23 @@ void Cpu::displayStats(){
     std::cout << std::fixed;
 	std::cout << "SYSTEM THREADS:" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << systemCount << std::endl;
-	std::cout << "    Average response time:" << std::setw(22) << std::right <<std::setprecision(2) << systemResponse << std::endl;
-	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << systemTurnaround << std::endl << std::endl;
+	std::cout << "    Avg response time:" << std::setw(22) << std::right <<std::setprecision(2) << systemResponse << std::endl;
+	std::cout << "    Avg turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << systemTurnaround << std::endl << std::endl;
 
-	std::cout << "INTERACTIVE THREADS" << std::endl;
+	std::cout << "INTERACTIVE THREADS:" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << interactiveCount << std::endl;
-	std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(2) << interactiveResponse << std::endl;
-	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << interactiveTurnaround << std::endl << std::endl;
+	std::cout << "    Avg response time:" << std::setw(22) << std::right << std::setprecision(2) << interactiveResponse << std::endl;
+	std::cout << "    Avg turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << interactiveTurnaround << std::endl << std::endl;
 
-	std::cout << "NORMAL THREADS" << std::endl;
+	std::cout << "NORMAL THREADS:" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << normalCount << std::endl;
-	std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(2) << normalResponse << std::endl;
-	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << normalTurnaround << std::endl << std::endl;
+	std::cout << "    Avg response time:" << std::setw(22) << std::right << std::setprecision(2) << normalResponse << std::endl;
+	std::cout << "    Avg turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << normalTurnaround << std::endl << std::endl;
 
-	std::cout << "BATCH THREADS" << std::endl;
+	std::cout << "BATCH THREADS:" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << batchCount << std::endl;
-	std::cout << "    Average response time:" << std::setw(22) << std::right << std::setprecision(2) << batchResponse << std::endl;
-	std::cout << "    Average turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << batchTurnaround << std::endl << std::endl;
+	std::cout << "    Avg response time:" << std::setw(22) << std::right << std::setprecision(2) << batchResponse << std::endl;
+	std::cout << "    Avg turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << batchTurnaround << std::endl << std::endl;
 
 	int dispatch = endTime - cpu - idle;
 	std::cout << "Total elapsed time: " << std::setw(28) << std::right << endTime << std::endl;
@@ -320,7 +320,7 @@ void Cpu::processEventsCustom() {
 // PRIORITY //
 void Cpu::processEventsPriority() {
     
-    std::vector<Thread> threads;
+    /*std::vector<Thread> threads;
     std::vector<Thread> readyThreadsSystem;
     std::vector<Thread> readyThreadsInteractive;
     std::vector<Thread> readyThreadsNormal;
@@ -342,7 +342,7 @@ void Cpu::processEventsPriority() {
     int nextDispatch = 0;
     idle = 0;
 
-    while((!threads.empty() || !readyThreads.empty() || !blockedThreads.empty())){
+    while((!threads.empty() || !readyThreadsSystem.empty() || !blockedThreads.empty())){
 	for(int i = 0; i < threads.size(); i++){
             if(threads[i].getTime() == timer){
                 readyThreads.push_back(threads[i]);
@@ -421,7 +421,7 @@ void Cpu::processEventsPriority() {
             }
         }
         timer++;
-    }
+    } */
 }
 
 
