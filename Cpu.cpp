@@ -273,7 +273,6 @@ void Cpu::displayStats(){
     std::cout << "Total I/O time: " << std::setw(32) << std::right << io << std::endl;
     std::cout << "Total dispatch time: " << std::setw(27) << std::right << dispatch << std::endl;
     std::cout << "Total idle time: " << std::setw(31) << std::right << idle << std::endl << std::endl;
-
     std::cout << "CPU utilization: " << std::setw(30) << (double) (endTime - idle) / endTime *100 << "%" << std::endl;
     std::cout << "CPU utilization: " << std::setw(30) << (double) (endTime - idle - dispatch) / endTime *100 << "%" << std::endl;
 }
@@ -393,8 +392,7 @@ void Cpu::processEventsRR() {
                 nextDispatch += tempBurst.get_cpu_time();
                 Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
                 priorityEvents.emplace(dispatch);
-
-                readyThreads.erase(readyThreads.begin());
+	        readyThreads.erase(readyThreads.begin());
 
                 //End of CPU_BURST
                 if (!runningThread.isCompleted(nextDispatch)) {
@@ -419,7 +417,6 @@ void Cpu::processEventsRR() {
                 }
             }
             else{
-                std::cout << timer << " test" << std::endl;
                 nextDispatch += timeSlice;
                 Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
                 priorityEvents.emplace(dispatch);
