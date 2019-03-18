@@ -1,0 +1,341 @@
+At time 0:
+    THREAD_ARRIVED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from NEW to READY
+
+At time 0:
+    DISPATCHER_INVOKED
+    Thread 0 in process 0 [INTERACTIVE]
+    Selected from 0 thread(s); will run to complete the burst time.
+
+At time 1:
+    THREAD_ARRIVED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from NEW to READY
+
+At time 5:
+    THREAD_ARRIVED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from NEW to READY
+
+At time 6:
+    THREAD_ARRIVED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from NEW to READY
+
+At time 7:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 7:
+    THREAD_ARRIVED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from NEW to READY
+
+At time 11:
+    CPU_BURST_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to BLOCKED
+
+At time 11:
+    DISPATCHER_INVOKED
+    Thread 0 in process 1 [SYSTEM]
+    Selected from 3 thread(s); will run to complete the burst time.
+
+At time 16:
+    IO_BURST_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from BLOCKED to READY
+
+At time 18:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 22:
+    CPU_BURST_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 22:
+    DISPATCHER_INVOKED
+    Thread 1 in process 1 [SYSTEM]
+    Selected from 3 thread(s); will run to complete the burst time.
+
+At time 23:
+    IO_BURST_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 25:
+    THREAD_DISPATCH_COMPLETED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 27:
+    CPU_BURST_COMPLETED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 27:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 3 thread(s); will run to complete the burst time.
+
+At time 29:
+    IO_BURST_COMPLETED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 30:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 35:
+    CPU_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 35:
+    DISPATCHER_INVOKED
+    Thread 0 in process 1 [SYSTEM]
+    Selected from 3 thread(s); will run to complete the burst time.
+
+At time 38:
+    THREAD_DISPATCH_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 40:
+    CPU_BURST_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 40:
+    DISPATCHER_INVOKED
+    Thread 1 in process 1 [SYSTEM]
+    Selected from 2 thread(s); will run to complete the burst time.
+
+At time 42:
+    IO_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 42:
+    IO_BURST_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 43:
+    THREAD_DISPATCH_COMPLETED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 46:
+    THREAD_COMPLETED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from RUNNING to EXIT
+
+At time 46:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 3 thread(s); will run to complete the burst time.
+
+At time 49:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 51:
+    CPU_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 51:
+    DISPATCHER_INVOKED
+    Thread 0 in process 1 [SYSTEM]
+    Selected from 2 thread(s); will run to complete the burst time.
+
+At time 52:
+    IO_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 54:
+    THREAD_DISPATCH_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 56:
+    THREAD_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from RUNNING to EXIT
+
+At time 56:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 2 thread(s); will run to complete the burst time.
+
+At time 59:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 67:
+    CPU_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 67:
+    DISPATCHER_INVOKED
+    Thread 1 in process 0 [INTERACTIVE]
+    Selected from 1 thread(s); will run to complete the burst time.
+
+At time 68:
+    IO_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 74:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 76:
+    CPU_BURST_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to BLOCKED
+
+At time 76:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 1 thread(s); will run to complete the burst time.
+
+At time 78:
+    IO_BURST_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from BLOCKED to READY
+
+At time 83:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 88:
+    CPU_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 88:
+    DISPATCHER_INVOKED
+    Thread 0 in process 0 [INTERACTIVE]
+    Selected from 1 thread(s); will run to complete the burst time.
+
+At time 95:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 95:
+    IO_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 98:
+    CPU_BURST_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to BLOCKED
+
+At time 98:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 1 thread(s); will run to complete the burst time.
+
+At time 104:
+    IO_BURST_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from BLOCKED to READY
+
+At time 105:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 108:
+    THREAD_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to EXIT
+
+At time 108:
+    DISPATCHER_INVOKED
+    Thread 1 in process 0 [INTERACTIVE]
+    Selected from 1 thread(s); will run to complete the burst time.
+
+At time 115:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 122:
+    THREAD_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to EXIT
+
+At time 122:
+    DISPATCHER_INVOKED
+    Thread 0 in process 0 [INTERACTIVE]
+    Selected from 0 thread(s); will run to complete the burst time.
+
+At time 125:
+    THREAD_DISPATCH_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 126:
+    THREAD_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to EXIT
+
+Process 0 [INTERACTIVE]:
+  	Thread 0:   ARR: 0     CPU: 8     I/O: 11    TRT: 126   END: 126 
+  	Thread 1:   ARR: 1     CPU: 9     I/O: 2     TRT: 121   END: 122 
+
+Process 1 [SYSTEM]:
+  	Thread 0:   ARR: 5     CPU: 8     I/O: 3     TRT: 51    END: 56  
+  	Thread 1:   ARR: 6     CPU: 5     I/O: 2     TRT: 40    END: 46  
+  	Thread 2:   ARR: 7     CPU: 23    I/O: 16    TRT: 101   END: 108 
+
+
+SIMULATION COMPLETED!
+
+SYSTEM THREADS: 
+	Total count:                3
+	Avg response time:      18.33
+	Avg turnaround time:    64.00
+
+INTERACTIVE THREADS: 
+	Total count:                2
+	Avg response time:      40.00
+	Avg turnaround time:   123.50
+
+NORMAL THREADS: 
+	Total count:                0
+	Avg response time:       0.00
+	Avg turnaround time:     0.00
+
+BATCH THREADS: 
+	Total count:                0
+	Avg response time:       0.00
+	Avg turnaround time:     0.00
+
+Total elapsed time:               126
+Total service time:                53
+Total I/O time:                    34
+Total Dispatch time:               73
+Total idle time:                    0
+
+CPU utilization:              100.00%
+CPU efficiency:                42.06%
+

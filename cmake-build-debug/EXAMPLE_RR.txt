@@ -1,0 +1,461 @@
+At time 0:
+    THREAD_ARRIVED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from NEW to READY
+
+At time 0:
+    DISPATCHER_INVOKED
+    Thread 0 in process 0 [INTERACTIVE]
+    Selected from 1 thread(s); alotted time slice of 3.
+
+At time 1:
+    THREAD_ARRIVED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from NEW to READY
+
+At time 5:
+    THREAD_ARRIVED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from NEW to READY
+
+At time 6:
+    THREAD_ARRIVED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from NEW to READY
+
+At time 7:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 7:
+    THREAD_ARRIVED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from NEW to READY
+
+At time 10:
+    THREAD_PREEMPTED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to READY
+
+At time 10:
+    DISPATCHER_INVOKED
+    Thread 1 in process 0 [INTERACTIVE]
+    Selected from 5 thread(s); alotted time slice of 3.
+
+At time 13:
+    THREAD_DISPATCH_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 15:
+    CPU_BURST_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to BLOCKED
+
+At time 15:
+    DISPATCHER_INVOKED
+    Thread 0 in process 1 [SYSTEM]
+    Selected from 4 thread(s); alotted time slice of 3.
+
+At time 17:
+    IO_BURST_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from BLOCKED to READY
+
+At time 22:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 25:
+    THREAD_PREEMPTED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from RUNNING to READY
+
+At time 25:
+    DISPATCHER_INVOKED
+    Thread 1 in process 1 [SYSTEM]
+    Selected from 5 thread(s); alotted time slice of 3.
+
+At time 28:
+    THREAD_DISPATCH_COMPLETED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 30:
+    CPU_BURST_COMPLETED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 30:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 4 thread(s); alotted time slice of 3.
+
+At time 32:
+    IO_BURST_COMPLETED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 33:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 36:
+    THREAD_PREEMPTED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to READY
+
+At time 36:
+    DISPATCHER_INVOKED
+    Thread 0 in process 0 [INTERACTIVE]
+    Selected from 5 thread(s); alotted time slice of 3.
+
+At time 43:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 44:
+    CPU_BURST_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to BLOCKED
+
+At time 44:
+    DISPATCHER_INVOKED
+    Thread 1 in process 0 [INTERACTIVE]
+    Selected from 4 thread(s); alotted time slice of 3.
+
+At time 47:
+    THREAD_DISPATCH_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 49:
+    IO_BURST_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from BLOCKED to READY
+
+At time 50:
+    THREAD_PREEMPTED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to READY
+
+At time 50:
+    DISPATCHER_INVOKED
+    Thread 0 in process 1 [SYSTEM]
+    Selected from 5 thread(s); alotted time slice of 3.
+
+At time 57:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 58:
+    CPU_BURST_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 58:
+    DISPATCHER_INVOKED
+    Thread 1 in process 1 [SYSTEM]
+    Selected from 4 thread(s); alotted time slice of 3.
+
+At time 59:
+    IO_BURST_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 61:
+    THREAD_DISPATCH_COMPLETED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 64:
+    THREAD_COMPLETED
+    Thread 1 in process 1 [SYSTEM]
+    Transitioned from RUNNING to EXIT
+
+At time 64:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 4 thread(s); alotted time slice of 3.
+
+At time 67:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 69:
+    CPU_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 69:
+    DISPATCHER_INVOKED
+    Thread 0 in process 0 [INTERACTIVE]
+    Selected from 3 thread(s); alotted time slice of 3.
+
+At time 76:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 76:
+    IO_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 79:
+    CPU_BURST_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to BLOCKED
+
+At time 79:
+    DISPATCHER_INVOKED
+    Thread 1 in process 0 [INTERACTIVE]
+    Selected from 3 thread(s); alotted time slice of 3.
+
+At time 82:
+    THREAD_DISPATCH_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 85:
+    THREAD_PREEMPTED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to READY
+
+At time 85:
+    IO_BURST_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from BLOCKED to READY
+
+At time 85:
+    DISPATCHER_INVOKED
+    Thread 0 in process 1 [SYSTEM]
+    Selected from 4 thread(s); alotted time slice of 3.
+
+At time 92:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 94:
+    CPU_BURST_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 94:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 3 thread(s); alotted time slice of 3.
+
+At time 96:
+    IO_BURST_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 97:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 99:
+    CPU_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 99:
+    DISPATCHER_INVOKED
+    Thread 1 in process 0 [INTERACTIVE]
+    Selected from 3 thread(s); alotted time slice of 3.
+
+At time 100:
+    IO_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 106:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 107:
+    THREAD_COMPLETED
+    Thread 1 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to EXIT
+
+At time 107:
+    DISPATCHER_INVOKED
+    Thread 0 in process 0 [INTERACTIVE]
+    Selected from 3 thread(s); alotted time slice of 3.
+
+At time 110:
+    THREAD_DISPATCH_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from READY to RUNNING
+
+At time 111:
+    THREAD_COMPLETED
+    Thread 0 in process 0 [INTERACTIVE]
+    Transitioned from RUNNING to EXIT
+
+At time 111:
+    DISPATCHER_INVOKED
+    Thread 0 in process 1 [SYSTEM]
+    Selected from 2 thread(s); alotted time slice of 3.
+
+At time 118:
+    PROCESS_DISPATCH_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 120:
+    THREAD_COMPLETED
+    Thread 0 in process 1 [SYSTEM]
+    Transitioned from RUNNING to EXIT
+
+At time 120:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 1 thread(s); alotted time slice of 3.
+
+At time 123:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 126:
+    THREAD_PREEMPTED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to READY
+
+At time 126:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 1 thread(s); alotted time slice of 3.
+
+At time 129:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 132:
+    THREAD_PREEMPTED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to READY
+
+At time 132:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 1 thread(s); alotted time slice of 3.
+
+At time 135:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 137:
+    CPU_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 138:
+    IO_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 138:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 1 thread(s); alotted time slice of 3.
+
+At time 141:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 144:
+    THREAD_PREEMPTED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to READY
+
+At time 144:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 1 thread(s); alotted time slice of 3.
+
+At time 147:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 149:
+    CPU_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to BLOCKED
+
+At time 156:
+    IO_BURST_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from BLOCKED to READY
+
+At time 156:
+    DISPATCHER_INVOKED
+    Thread 2 in process 1 [SYSTEM]
+    Selected from 1 thread(s); alotted time slice of 3.
+
+At time 159:
+    THREAD_DISPATCH_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from READY to RUNNING
+
+At time 162:
+    THREAD_COMPLETED
+    Thread 2 in process 1 [SYSTEM]
+    Transitioned from RUNNING to EXIT
+
+Process 0 [INTERACTIVE]:
+  	Thread 0:   ARR: 0     CPU: 8     I/O: 11    TRT: 111   END: 111 
+  	Thread 1:   ARR: 1     CPU: 9     I/O: 2     TRT: 106   END: 107 
+
+Process 1 [SYSTEM]:
+  	Thread 0:   ARR: 5     CPU: 8     I/O: 3     TRT: 115   END: 120 
+  	Thread 1:   ARR: 6     CPU: 5     I/O: 2     TRT: 58    END: 64  
+  	Thread 2:   ARR: 7     CPU: 23    I/O: 16    TRT: 155   END: 162 
+
+
+SIMULATION COMPLETED!
+
+SYSTEM THREADS: 
+	Total count:                3
+	Avg response time:      21.67
+	Avg turnaround time:   109.33
+
+INTERACTIVE THREADS: 
+	Total count:                2
+	Avg response time:       9.50
+	Avg turnaround time:   108.50
+
+NORMAL THREADS: 
+	Total count:                0
+	Avg response time:       0.00
+	Avg turnaround time:     0.00
+
+BATCH THREADS: 
+	Total count:                0
+	Avg response time:       0.00
+	Avg turnaround time:     0.00
+
+Total elapsed time:               162
+Total service time:                53
+Total I/O time:                    34
+Total Dispatch time:              101
+Total idle time:                    8
+
+CPU utilization:               95.06%
+CPU efficiency:                32.72%
+
