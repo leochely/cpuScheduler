@@ -249,23 +249,23 @@ void Cpu::displayStats(){
     std::cout << std::fixed;
 	std::cout << "SYSTEM THREADS:" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << systemCount << std::endl;
-	std::cout << "    Avg response time:" << std::setw(22) << std::right <<std::setprecision(2) << systemResponse << std::endl;
-	std::cout << "    Avg turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << systemTurnaround << std::endl << std::endl;
+	std::cout << "    Avg response time:" << std::setw(26) << std::right <<std::setprecision(2) << systemResponse << std::endl;
+	std::cout << "    Avg turnaround time:" << std::setw(24) << std::right << std::setprecision(2) << systemTurnaround << std::endl << std::endl;
 
 	std::cout << "INTERACTIVE THREADS:" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << interactiveCount << std::endl;
-	std::cout << "    Avg response time:" << std::setw(22) << std::right << std::setprecision(2) << interactiveResponse << std::endl;
-	std::cout << "    Avg turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << interactiveTurnaround << std::endl << std::endl;
+	std::cout << "    Avg response time:" << std::setw(26) << std::right << std::setprecision(2) << interactiveResponse << std::endl;
+	std::cout << "    Avg turnaround time:" << std::setw(24) << std::right << std::setprecision(2) << interactiveTurnaround << std::endl << std::endl;
 
 	std::cout << "NORMAL THREADS:" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << normalCount << std::endl;
-	std::cout << "    Avg response time:" << std::setw(22) << std::right << std::setprecision(2) << normalResponse << std::endl;
-	std::cout << "    Avg turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << normalTurnaround << std::endl << std::endl;
+	std::cout << "    Avg response time:" << std::setw(26) << std::right << std::setprecision(2) << normalResponse << std::endl;
+	std::cout << "    Avg turnaround time:" << std::setw(24) << std::right << std::setprecision(2) << normalTurnaround << std::endl << std::endl;
 
 	std::cout << "BATCH THREADS:" << std::endl;
 	std::cout << "    Total count:" << std::setw(32) << std::right << batchCount << std::endl;
-	std::cout << "    Avg response time:" << std::setw(22) << std::right << std::setprecision(2) << batchResponse << std::endl;
-	std::cout << "    Avg turnaround time:" << std::setw(20) << std::right << std::setprecision(2) << batchTurnaround << std::endl << std::endl;
+	std::cout << "    Avg response time:" << std::setw(26) << std::right << std::setprecision(2) << batchResponse << std::endl;
+	std::cout << "    Avg turnaround time:" << std::setw(24) << std::right << std::setprecision(2) << batchTurnaround << std::endl << std::endl;
 
 	int dispatch = endTime - cpu - idle;
 	std::cout << "Total elapsed time: " << std::setw(28) << std::right << endTime << std::endl;
@@ -320,11 +320,8 @@ void Cpu::processEventsCustom() {
 // PRIORITY //
 void Cpu::processEventsPriority() {
     
-    /*std::vector<Thread> threads;
-    std::vector<Thread> readyThreadsSystem;
-    std::vector<Thread> readyThreadsInteractive;
-    std::vector<Thread> readyThreadsNormal;
-    std::vector<Thread> readyThreadsBatch;
+    std::vector<Thread> threads;
+    std::vector<std::vector<Thread>> readyThreads{{}, {}, {}, {}};
     std::vector<Thread> blockedThreads;
     Thread runningThread;
 
@@ -336,59 +333,142 @@ void Cpu::processEventsPriority() {
         }
     }
 
-    // Processes threads
-    int timer = 0;
-    int timeSlice = 3;
-    int nextDispatch = 0;
-    idle = 0;
 
-    while((!threads.empty() || !readyThreadsSystem.empty() || !blockedThreads.empty())){
-	for(int i = 0; i < threads.size(); i++){
-            if(threads[i].getTime() == timer){
-                readyThreads.push_back(threads[i]);
-                threads.erase(threads.begin()+i);
+    int timer = 0;
+    idle = 0;
+    int currentPriority = 4;
+    int nextDispatch = 0;
+
+    // Processes threads
+    while((!threads.empty() || !readyThreads[0].empty() || !readyThreads[1].empty() || !readyThreads[2].empty() || readyThreads[3].empty() || !blockedThreads.empty())) {
+        for (int i = 0; i < threads.size(); i++) {
+            std::cout << threads[0].getTime();
+            if (threads[i].getTime() == timer) {
+                std::cout << i;
+                switch (processes[threads[i].getPId()].getType()) {
+                    case 's':
+                        readyThreads[0].push_back(threads[i]);
+                        break;
+                    case 'b':
+                        readyThreads[1].push_back(threads[i]);
+                        break;
+                    case 'i':
+                        readyThreads[2].push_back(threads[i]);
+                        break;
+                    case 'n':
+                        readyThreads[3].push_back(threads[i]);
+                        break;
+                }
+                threads.erase(threads.begin() + i);
                 i--;
             }
         }
 
-        for(int i = 0; i < blockedThreads.size(); i++) {
+        for (int i = 0; i < blockedThreads.size(); i++) {
             if (blockedThreads[i].isReady(timer)) {
-                readyThreads.push_back(blockedThreads[i]);
+                switch (processes[blockedThreads[i].getPId()].getType()) {
+                    case 's':
+                        readyThreads[0].push_back(threads[i]);
+                        break;
+                    case 'b':
+                        readyThreads[1].push_back(threads[i]);
+                        break;
+                    case 'i':
+                        readyThreads[2].push_back(threads[i]);
+                        break;
+                    case 'n':
+                        readyThreads[3].push_back(threads[i]);
+                        break;
+                }
                 blockedThreads.erase(blockedThreads.begin() + i);
                 i--;
             }
         }
-        if(nextDispatch == timer){
-            if (readyThreads.empty()){
-                nextDispatch++;
-                idle++;
-                timer++;
-                continue;
+
+        while (!threads.empty() || !readyThreads.empty() || !blockedThreads.empty()) {
+            for (int i = 0; i < threads.size(); i++) {
+                if (threads[i].getTime() == timer) {
+                    switch (processes[blockedThreads[i].getPId()].getType()) {
+                        case 's':
+                            readyThreads[0].push_back(threads[i]);
+                            break;
+                        case 'b':
+                            readyThreads[1].push_back(threads[i]);
+                            break;
+                        case 'i':
+                            readyThreads[2].push_back(threads[i]);
+                            break;
+                        case 'n':
+                            readyThreads[3].push_back(threads[i]);
+                            break;
+                    }
+                    threads.erase(threads.begin() + i);
+                    i--;
+                }
             }
 
-            int oldPid = runningThread.getPId();
-            runningThread = readyThreads[0];
-
-            if(readyThreads[0].getPId() != oldPid){
-                nextDispatch += processSwitchOverhead;
-                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2);
-                priorityEvents.emplace(dispatched);
+            for (int i = 0; i < blockedThreads.size(); i++) {
+                if (blockedThreads[i].isReady(timer)) {
+                    switch (processes[blockedThreads[i].getPId()].getType()) {
+                        case 's':
+                            readyThreads[0].push_back(threads[i]);
+                            break;
+                        case 'b':
+                            readyThreads[1].push_back(threads[i]);
+                            break;
+                        case 'i':
+                            readyThreads[2].push_back(threads[i]);
+                            break;
+                        case 'n':
+                            readyThreads[3].push_back(threads[i]);
+                            break;
+                    }
+                    blockedThreads.erase(blockedThreads.begin() + i);
+                    i--;
+                }
             }
-            else{
-                nextDispatch += threadSwitchOverhead;
-                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 3);
-                priorityEvents.emplace(dispatched);
-            }
 
-            runningThread.setResponseTime(nextDispatch);
-            Burst tempBurst = runningThread.processBurstRR(nextDispatch, timeSlice);
+            if (nextDispatch == timer) {
+                if (readyThreads[0].empty() && readyThreads[1].empty() && readyThreads[2].empty() &&
+                    readyThreads[3].empty()) {
+                    nextDispatch++;
+                    idle++;
+                    timer++;
+                    continue;
+                }
 
-            // Updates next time dispatcher is invoked
-            if (tempBurst.get_cpu_time() <= timeSlice) {
+                int oldPid = runningThread.getPId();
+                for (int i = 0; i < 4; i++) {
+                    if(!readyThreads[i].empty()){
+                        currentPriority = i;
+                        runningThread = readyThreads[i][0];
+                        readyThreads[i].erase(readyThreads[i].begin());
+                        break;
+                    }
+                }
+
+
+                if (runningThread.getPId() != oldPid) {
+                    nextDispatch += processSwitchOverhead;
+                    Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch,
+                                     readyThreads.size(), 2);
+                    priorityEvents.emplace(dispatched);
+                } else {
+                    nextDispatch += threadSwitchOverhead;
+                    Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch,
+                                     readyThreads.size(), 3);
+                    priorityEvents.emplace(dispatched);
+                }
+
+                runningThread.setResponseTime(nextDispatch);
+                Burst tempBurst = runningThread.processBurst(nextDispatch);
+
+                // Updates next time dispatcher is invoked
                 nextDispatch += tempBurst.get_cpu_time();
                 Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
                 priorityEvents.emplace(dispatch);
-	        readyThreads.erase(readyThreads.begin());
+
+                readyThreads.erase(readyThreads.begin());
 
                 //End of CPU_BURST
                 if (!runningThread.isCompleted(nextDispatch)) {
@@ -402,6 +482,7 @@ void Cpu::processEventsPriority() {
                     priorityEvents.emplace(burstDone);
                     continue;
                 }
+
                 // End of IO_BURST
                 if (tempBurst.get_io_time() > 0) {
                     Event ioDone(processes[runningThread.getPId()], runningThread,
@@ -409,19 +490,12 @@ void Cpu::processEventsPriority() {
                     priorityEvents.emplace(ioDone);
                     blockedThreads.push_back(runningThread);
                 } else {
-                    readyThreads.push_back(runningThread);
+                    readyThreads[currentPriority].push_back(runningThread);
                 }
             }
-            else{
-                nextDispatch += timeSlice;
-                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
-                priorityEvents.emplace(dispatch);
-                blockedThreads.push_back(runningThread);
-                readyThreads.erase(readyThreads.begin());
-            }
+            timer++;
         }
-        timer++;
-    } */
+    }
 }
 
 
@@ -519,7 +593,7 @@ void Cpu::processEventsRR() {
             }
             else{
                 nextDispatch += timeSlice;
-                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
+                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 7);
                 priorityEvents.emplace(dispatch);
                 blockedThreads.push_back(runningThread);
                 readyThreads.erase(readyThreads.begin());

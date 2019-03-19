@@ -31,8 +31,11 @@ Event::Event(Process p, Thread th, int ti, int ot, int ty){
         case 5:
             type = THREAD_COMPLETED;
             break;
-            case 6:
+        case 6:
             type = IO_BURST_COMPLETED;
+            break;
+        case 7:
+            type = THREAD_PREEMPTED;
             break;
     }
 }
@@ -53,7 +56,7 @@ void Event::printEvent() const{
 		processType = "BATCH";
 		break;
 	case 'n':
-		processType = "NROMAL";
+		processType = "NORMAL";
 		break;
     }
 
@@ -79,6 +82,9 @@ void Event::printEvent() const{
         case THREAD_COMPLETED:
             std::cout << "    THREAD_COMPLETED" << std::endl;
             break;
+        case THREAD_PREEMPTED:
+            std::cout << "    THREAD_PREEMPTED" << std::endl;
+            break;
     }
     std::cout << "    Thread " << thread.getId() << " in process " << process.getPid() << " {" << processType << "}" << std::endl;
     switch(type){
@@ -102,6 +108,9 @@ void Event::printEvent() const{
             break;
         case THREAD_COMPLETED:
             std::cout << "    Transitioned from RUNNING to EXIT" << std::endl << std::endl;
+            break;
+        case THREAD_PREEMPTED:
+            std::cout << "    Transitioned from RUNNING to READY" << std::endl << std::endl;
             break;
     }
 }
