@@ -7,11 +7,12 @@
 #include "Thread.h"
 #include "Process.h"
 
-Event::Event(Process p, Thread th, int ti, int ot, int ty){
+Event::Event(Process p, Thread th, int ti, int ot, int ty, int ts){
     process = p;
     thread = th;
     time = ti;
     otherThreads = ot;
+    timeSlice = ts;
     switch(ty){
         case 0:
             type = THREAD_ARRIVED;
@@ -92,7 +93,13 @@ void Event::printEvent() const{
             std::cout <<"    Transitioned from NEW to READY" << std::endl << std::endl;
             break;
         case DISPATCHER_INVOKED:
-            std::cout << "    Selected from " << otherThreads << " threads; will run to completion of burst" << std::endl << std::endl;
+            std::cout << "    Selected from " << otherThreads << " threads;";
+            if(timeSlice > 0){
+                std::cout << " allotted time slice of " << timeSlice << std::endl <<std::endl;
+            }
+            else{
+                std::cout << " will run to completion of burst" << std::endl << std::endl;
+            }
             break;
         case PROCESS_DISPATCH_COMPLETED:
             std::cout << "    Transitioned from READY to RUNNING" << std::endl << std::endl;

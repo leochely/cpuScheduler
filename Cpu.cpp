@@ -84,7 +84,7 @@ void Cpu::processEventsFCFS() {
     for (auto &process : processes) {
         for (int j = 0; j < process.getThreads().size(); j++) {
             threads.push_back(process.getThreads()[j]);
-            Event tempEvent(process, process.getThreads()[j], process.getThreads()[j].getTime(), 0, 0);
+            Event tempEvent(process, process.getThreads()[j], process.getThreads()[j].getTime(), 0, 0, 0);
             priorityEvents.emplace(tempEvent);
         }
     }
@@ -124,12 +124,12 @@ void Cpu::processEventsFCFS() {
 
 	        if(readyThreads[0].getPId() != oldPid){
 		    nextDispatch += processSwitchOverhead;
-                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2);
+                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2, 0);
                 priorityEvents.emplace(dispatched);
             }
             else{
 		        nextDispatch += threadSwitchOverhead;
-                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 3);
+                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 3, 0);
                 priorityEvents.emplace(dispatched);
             }
 
@@ -138,7 +138,7 @@ void Cpu::processEventsFCFS() {
 
             // Updates next time dispatcher is invoked
             nextDispatch += tempBurst.get_cpu_time();
-	        Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
+	        Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1, 0);
 	        priorityEvents.emplace(dispatch);
 
             readyThreads.erase(readyThreads.begin());
@@ -146,13 +146,13 @@ void Cpu::processEventsFCFS() {
             //End of CPU_BURST
             if(!runningThread.isCompleted(nextDispatch)) {
        		Event threadDone(processes[runningThread.getPId()], runningThread, nextDispatch,
-                              readyThreads.size(), 4);
+                              readyThreads.size(), 4, 0);
                 priorityEvents.emplace(threadDone);
             }
             else{
                 completedThreads.push_back(runningThread);
 		        Event burstDone(processes[runningThread.getPId()], runningThread, nextDispatch,
-                           readyThreads.size(), 5);
+                           readyThreads.size(), 5, 0);
                 priorityEvents.emplace(burstDone);
                 continue;
             }
@@ -160,7 +160,7 @@ void Cpu::processEventsFCFS() {
             // End of IO_BURST
             if(tempBurst.get_io_time() > 0) {
                 Event ioDone(processes[runningThread.getPId()], runningThread,
-                             nextDispatch + tempBurst.get_io_time(), readyThreads.size(), 6);
+                             nextDispatch + tempBurst.get_io_time(), readyThreads.size(), 6, 0);
                 priorityEvents.emplace(ioDone);
                 blockedThreads.push_back(runningThread);
             }
@@ -324,11 +324,10 @@ void Cpu::processEventsPriority() {
     std::vector<std::vector<Thread>> readyThreads{{}, {}, {}, {}};
     std::vector<Thread> blockedThreads;
     Thread runningThread;
-
     for (auto &process : processes) {
         for (int j = 0; j < process.getThreads().size(); j++) {
             threads.push_back(process.getThreads()[j]);
-            Event tempEvent(process, process.getThreads()[j], process.getThreads()[j].getTime(), 0, 0);
+            Event tempEvent(process, process.getThreads()[j], process.getThreads()[j].getTime(), 0, 0, 0);
             priorityEvents.emplace(tempEvent);
         }
     }
@@ -342,7 +341,6 @@ void Cpu::processEventsPriority() {
     // Processes threads
     while((!threads.empty() || !readyThreads[0].empty() || !readyThreads[1].empty() || !readyThreads[2].empty() || readyThreads[3].empty() || !blockedThreads.empty())) {
         for (int i = 0; i < threads.size(); i++) {
-            std::cout << threads[0].getTime();
             if (threads[i].getTime() == timer) {
                 std::cout << i;
                 switch (processes[threads[i].getPId()].getType()) {
@@ -451,12 +449,12 @@ void Cpu::processEventsPriority() {
                 if (runningThread.getPId() != oldPid) {
                     nextDispatch += processSwitchOverhead;
                     Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch,
-                                     readyThreads.size(), 2);
+                                     readyThreads.size(), 2, 0);
                     priorityEvents.emplace(dispatched);
                 } else {
                     nextDispatch += threadSwitchOverhead;
                     Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch,
-                                     readyThreads.size(), 3);
+                                     readyThreads.size(), 3, 0);
                     priorityEvents.emplace(dispatched);
                 }
 
@@ -465,20 +463,18 @@ void Cpu::processEventsPriority() {
 
                 // Updates next time dispatcher is invoked
                 nextDispatch += tempBurst.get_cpu_time();
-                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
+                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1, 0);
                 priorityEvents.emplace(dispatch);
-
-                readyThreads.erase(readyThreads.begin());
 
                 //End of CPU_BURST
                 if (!runningThread.isCompleted(nextDispatch)) {
                     Event threadDone(processes[runningThread.getPId()], runningThread, nextDispatch,
-                                     readyThreads.size(), 4);
+                                     readyThreads.size(), 4, 0);
                     priorityEvents.emplace(threadDone);
                 } else {
                     completedThreads.push_back(runningThread);
                     Event burstDone(processes[runningThread.getPId()], runningThread, nextDispatch,
-                                    readyThreads.size(), 5);
+                                    readyThreads.size(), 5, 0);
                     priorityEvents.emplace(burstDone);
                     continue;
                 }
@@ -486,7 +482,7 @@ void Cpu::processEventsPriority() {
                 // End of IO_BURST
                 if (tempBurst.get_io_time() > 0) {
                     Event ioDone(processes[runningThread.getPId()], runningThread,
-                                 nextDispatch + tempBurst.get_io_time(), readyThreads.size(), 6);
+                                 nextDispatch + tempBurst.get_io_time(), readyThreads.size(), 6, 0);
                     priorityEvents.emplace(ioDone);
                     blockedThreads.push_back(runningThread);
                 } else {
@@ -510,7 +506,7 @@ void Cpu::processEventsRR() {
     for (auto &process : processes) {
         for (int j = 0; j < process.getThreads().size(); j++) {
             threads.push_back(process.getThreads()[j]);
-            Event tempEvent(process, process.getThreads()[j], process.getThreads()[j].getTime(), 0, 0);
+            Event tempEvent(process, process.getThreads()[j], process.getThreads()[j].getTime(), 0, 0, 0);
             priorityEvents.emplace(tempEvent);
         }
     }
@@ -550,12 +546,12 @@ void Cpu::processEventsRR() {
 
             if(readyThreads[0].getPId() != oldPid){
                 nextDispatch += processSwitchOverhead;
-                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2);
+                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2, timeSlice);
                 priorityEvents.emplace(dispatched);
             }
             else{
                 nextDispatch += threadSwitchOverhead;
-                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 3);
+                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 3, timeSlice);
                 priorityEvents.emplace(dispatched);
             }
 
@@ -565,26 +561,26 @@ void Cpu::processEventsRR() {
             // Updates next time dispatcher is invoked
             if (tempBurst.get_cpu_time() <= timeSlice) {
                 nextDispatch += tempBurst.get_cpu_time();
-                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1);
+                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1, timeSlice);
                 priorityEvents.emplace(dispatch);
 	        readyThreads.erase(readyThreads.begin());
 
                 //End of CPU_BURST
                 if (!runningThread.isCompleted(nextDispatch)) {
                     Event threadDone(processes[runningThread.getPId()], runningThread, nextDispatch,
-                                     readyThreads.size(), 4);
+                                     readyThreads.size(), 4, timeSlice);
                     priorityEvents.emplace(threadDone);
                 } else {
                     completedThreads.push_back(runningThread);
                     Event burstDone(processes[runningThread.getPId()], runningThread, nextDispatch,
-                                    readyThreads.size(), 5);
+                                    readyThreads.size(), 5, timeSlice);
                     priorityEvents.emplace(burstDone);
                     continue;
                 }
                 // End of IO_BURST
                 if (tempBurst.get_io_time() > 0) {
                     Event ioDone(processes[runningThread.getPId()], runningThread,
-                                 nextDispatch + tempBurst.get_io_time(), readyThreads.size(), 6);
+                                 nextDispatch + tempBurst.get_io_time(), readyThreads.size(), 6, timeSlice);
                     priorityEvents.emplace(ioDone);
                     blockedThreads.push_back(runningThread);
                 } else {
@@ -593,7 +589,7 @@ void Cpu::processEventsRR() {
             }
             else{
                 nextDispatch += timeSlice;
-                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 7);
+                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 7, timeSlice);
                 priorityEvents.emplace(dispatch);
                 blockedThreads.push_back(runningThread);
                 readyThreads.erase(readyThreads.begin());

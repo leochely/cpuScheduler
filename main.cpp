@@ -58,10 +58,18 @@ int main(int argc, char **argv) {
 	cpu.processInput(file);
 
 	if(algo){
-	    if(algorithm == "FCFS") cpu.processEventsFCFS();
-	    else if (algorithm == "RR") cpu.processEventsRR();
-	    else if (algorithm == "PRIORITY") cpu.processEventsPriority();
-	    else if (algorithm == "CUSTOM") cpu.processEventsCustom();
+	    if(algorithm == "FCFS"){
+            cpu.processEventsFCFS();
+	    }
+	    else if (algorithm == "RR") {
+            cpu.processEventsRR();
+        }
+        else if (algorithm == "PRIORITY") {
+            cpu.processEventsPriority();
+        }
+        else if (algorithm == "CUSTOM") {
+            cpu.processEventsCustom();
+        }
 	    else{
 	        std::cout << algorithm << std::endl;
 	        std::cout << "Invalid algorithm name" << std::endl;

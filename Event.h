@@ -9,6 +9,7 @@
 
 class Event {
 private:
+    int timeSlice;
     int time;
     int otherThreads;
     enum Type{THREAD_ARRIVED, DISPATCHER_INVOKED, PROCESS_DISPATCH_COMPLETED, IO_BURST_COMPLETED, CPU_BURST_COMPLETED, THREAD_DISPATCH_COMPLETED, THREAD_COMPLETED, THREAD_PREEMPTED};
@@ -16,7 +17,7 @@ private:
     Thread thread;
     Process process;
 public:
-    Event(Process process, Thread thread, int time, int otherThreads, int type);
+    Event(Process process, Thread thread, int time, int otherThreads, int type, int ts);
     void printEvent() const;
     bool operator<(const Event &temp) const;
 };
