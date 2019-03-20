@@ -337,12 +337,11 @@ void Cpu::processEventsPriority() {
     idle = 0;
     int currentPriority = 4;
     int nextDispatch = 0;
-
     // Processes threads
-    while((!threads.empty() || !readyThreads[0].empty() || !readyThreads[1].empty() || !readyThreads[2].empty() || readyThreads[3].empty() || !blockedThreads.empty())) {
+    while((!threads.empty() || !readyThreads[0].empty() || !readyThreads[1].empty() || !readyThreads[2].empty() || !readyThreads[3].empty() || !blockedThreads.empty())) {
+
         for (int i = 0; i < threads.size(); i++) {
             if (threads[i].getTime() == timer) {
-                std::cout << i;
                 switch (processes[threads[i].getPId()].getType()) {
                     case 's':
                         readyThreads[0].push_back(threads[i]);
@@ -361,49 +360,6 @@ void Cpu::processEventsPriority() {
                 i--;
             }
         }
-
-        for (int i = 0; i < blockedThreads.size(); i++) {
-            if (blockedThreads[i].isReady(timer)) {
-                switch (processes[blockedThreads[i].getPId()].getType()) {
-                    case 's':
-                        readyThreads[0].push_back(threads[i]);
-                        break;
-                    case 'b':
-                        readyThreads[1].push_back(threads[i]);
-                        break;
-                    case 'i':
-                        readyThreads[2].push_back(threads[i]);
-                        break;
-                    case 'n':
-                        readyThreads[3].push_back(threads[i]);
-                        break;
-                }
-                blockedThreads.erase(blockedThreads.begin() + i);
-                i--;
-            }
-        }
-
-        while (!threads.empty() || !readyThreads.empty() || !blockedThreads.empty()) {
-            for (int i = 0; i < threads.size(); i++) {
-                if (threads[i].getTime() == timer) {
-                    switch (processes[blockedThreads[i].getPId()].getType()) {
-                        case 's':
-                            readyThreads[0].push_back(threads[i]);
-                            break;
-                        case 'b':
-                            readyThreads[1].push_back(threads[i]);
-                            break;
-                        case 'i':
-                            readyThreads[2].push_back(threads[i]);
-                            break;
-                        case 'n':
-                            readyThreads[3].push_back(threads[i]);
-                            break;
-                    }
-                    threads.erase(threads.begin() + i);
-                    i--;
-                }
-            }
 
             for (int i = 0; i < blockedThreads.size(); i++) {
                 if (blockedThreads[i].isReady(timer)) {
@@ -440,11 +396,11 @@ void Cpu::processEventsPriority() {
                     if(!readyThreads[i].empty()){
                         currentPriority = i;
                         runningThread = readyThreads[i][0];
+                        std::cout << runningThread.getPId() << " " << runningThread.getId()<< std::endl;
                         readyThreads[i].erase(readyThreads[i].begin());
                         break;
                     }
                 }
-
 
                 if (runningThread.getPId() != oldPid) {
                     nextDispatch += processSwitchOverhead;
@@ -490,9 +446,9 @@ void Cpu::processEventsPriority() {
                 }
             }
             timer++;
-        }
     }
 }
+
 
 
 // ROUND ROBIN //
@@ -518,7 +474,7 @@ void Cpu::processEventsRR() {
     idle = 0;
 
     while((!threads.empty() || !readyThreads.empty() || !blockedThreads.empty())){
-	for(int i = 0; i < threads.size(); i++){
+	    for(int i = 0; i < threads.size(); i++){
             if(threads[i].getTime() == timer){
                 readyThreads.push_back(threads[i]);
                 threads.erase(threads.begin()+i);
