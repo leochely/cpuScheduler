@@ -1,3 +1,4 @@
+
 //
 // Created by Leo on 2/14/2019.
 //
@@ -316,10 +317,8 @@ void Cpu::displayPerThread(){
 void Cpu::processEventsCustom() {
 }
 
-
 // PRIORITY //
 void Cpu::processEventsPriority() {
-    
     std::vector<Thread> threads;
     std::vector<std::vector<Thread>> readyThreads{{}, {}, {}, {}};
     std::vector<Thread> blockedThreads;
@@ -339,10 +338,10 @@ void Cpu::processEventsPriority() {
     int nextDispatch = 0;
     // Processes threads
     while((!threads.empty() || !readyThreads[0].empty() || !readyThreads[1].empty() || !readyThreads[2].empty() || !readyThreads[3].empty() || !blockedThreads.empty())) {
-
+	if(timer  == 200) break;
         for (int i = 0; i < threads.size(); i++) {
             if (threads[i].getTime() == timer) {
-                switch (processes[threads[i].getPId()].getType()) {
+		switch (processes[threads[i].getPId()].getType()) {
                     case 's':
                         readyThreads[0].push_back(threads[i]);
                         break;
@@ -363,6 +362,8 @@ void Cpu::processEventsPriority() {
 
             for (int i = 0; i < blockedThreads.size(); i++) {
                 if (blockedThreads[i].isReady(timer)) {
+		    std::cout << timer << std::endl;
+		    std::cout << blockedThreads[i].getPId() << " " << blockedThreads[i].getId() << std::endl;
                     switch (processes[blockedThreads[i].getPId()].getType()) {
                         case 's':
                             readyThreads[0].push_back(threads[i]);
@@ -396,7 +397,6 @@ void Cpu::processEventsPriority() {
                     if(!readyThreads[i].empty()){
                         currentPriority = i;
                         runningThread = readyThreads[i][0];
-                        std::cout << runningThread.getPId() << " " << runningThread.getId()<< std::endl;
                         readyThreads[i].erase(readyThreads[i].begin());
                         break;
                     }
@@ -419,7 +419,7 @@ void Cpu::processEventsPriority() {
 
                 // Updates next time dispatcher is invoked
                 nextDispatch += tempBurst.get_cpu_time();
-                Event dispatch(processes[runningThread.getPId()], runningThread, timer, readyThreads.size(), 1, 0);
+                Event dispatch(processes[runningThread.getPId()], runningThread, timer, 1+readyThreads[0].size()+readyThreads[1].size()+readyThreads[2].size()+readyThreads[3].size(), 1, 0);
                 priorityEvents.emplace(dispatch);
 
                 //End of CPU_BURST
