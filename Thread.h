@@ -19,12 +19,12 @@ private:
     int responseTime;
     bool hasStarted;
     enum State{NEW, READY, RUNNING, BLOCKED, EXIT};
-    std::vector<Burst> bursts;
     int id;
 
 public:
     Thread();
     Thread(int t, int i, int p);
+    std::vector<Burst> bursts;
     State state;
     void addBurst(Burst b);
     int getTime() const{return timeArrival;};
