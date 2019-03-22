@@ -12,6 +12,8 @@
 #include "Thread.h"
 #include "Burst.h"
 #include <iomanip>
+#include <stdlib.h>
+#include <ctime>
 
 Cpu::Cpu() = default;
 
@@ -123,6 +125,7 @@ void Cpu::processEventsFCFS() {
 	        int oldPid = runningThread.getPId();
             runningThread = readyThreads[0];
 
+            // Determines if there is a thread or process switch
 	        if(runningThread.getPId() != oldPid){
 		    nextDispatch += processSwitchOverhead;
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2, 0);
@@ -315,6 +318,122 @@ void Cpu::displayPerThread(){
 
 // CUSTOM EVENT //
 void Cpu::processEventsCustom() {
+    std::vector<Thread> threads;
+    std::vector<std::vector<Thread>> readyThreads{{},{},{},{},{}};
+    std::vector<Thread> blockedThreads;
+    Thread runningThread;
+
+    srand(time(NULL));
+
+    for (auto &process : processes) {
+        for (int j = 0; j < process.getThreads().size(); j++) {
+            threads.push_back(process.getThreads()[j]);
+            Event tempEvent(process, process.getThreads()[j], process.getThreads()[j].getTime(), 0, 0, 0);
+            priorityEvents.emplace(tempEvent);
+        }
+    }
+
+    // Processes threads
+    int timer = 0;
+    int nextDispatch = 0;
+    idle = 0;
+    int currentQueue = 0;
+
+    while(!threads.empty() || !readyThreads[0].empty() || !readyThreads[1].empty() || !readyThreads[2].empty() || !readyThreads[3].empty() || !blockedThreads.empty()|| !readyThreads[4].empty()){
+        for(int i = 0; i < threads.size(); i++){
+            if(threads[i].getTime() == timer){
+                readyThreads[currentQueue].push_back(threads[i]);
+                threads.erase(threads.begin()+i);
+                i--;
+                currentQueue ++;
+                currentQueue %= 5;
+            }
+        }
+
+        for(int i = 0; i < blockedThreads.size(); i++) {
+            if (blockedThreads[i].isReady(timer)) {
+                readyThreads[currentQueue].push_back(blockedThreads[i]);
+                blockedThreads.erase(blockedThreads.begin() + i);
+                i--;
+                currentQueue++;
+                currentQueue %= 5;
+            }
+        }
+
+        if(nextDispatch == timer){
+            if (readyThreads[0].empty() && readyThreads[1].empty() && readyThreads[2].empty() && readyThreads[3].empty() && readyThreads[4].empty()){
+                nextDispatch++;
+                idle++;
+                timer++;
+                continue;
+            }
+
+            int oldPid = runningThread.getPId();
+
+            // Selects next thread from a random queue
+            int randomIndex = 0;
+            do{
+                randomIndex = rand() % 5;
+            }while(readyThreads[randomIndex].empty());
+
+            runningThread = readyThreads[randomIndex][0];
+            readyThreads[randomIndex].erase(readyThreads[randomIndex].begin());
+            int otherThreads = readyThreads[0].size() + readyThreads[1].size() + readyThreads[2].size() + readyThreads[3].size() + readyThreads[4].size();
+
+            // Determines if there is a thread or process switch
+            if(runningThread.getPId() != oldPid){
+                nextDispatch += processSwitchOverhead;
+                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, otherThreads, 2, 0);
+                priorityEvents.emplace(dispatched);
+            }
+            else{
+                nextDispatch += threadSwitchOverhead;
+                Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, otherThreads, 3, 0);
+                priorityEvents.emplace(dispatched);
+            }
+
+
+            runningThread.setResponseTime(nextDispatch);
+
+            // Allocates a random time slice
+            int timeSlice = rand() %runningThread.bursts[0].get_cpu_time() +1;
+            Burst tempBurst = runningThread.processBurstRR(nextDispatch, timeSlice);
+
+            // Updates next time dispatcher is invoked
+            if (tempBurst.get_cpu_time() <= timeSlice) {
+                nextDispatch += tempBurst.get_cpu_time();
+                Event dispatch(processes[runningThread.getPId()], runningThread, timer, otherThreads, 1, timeSlice);
+                priorityEvents.emplace(dispatch);
+
+                //End of CPU_BURST
+                if (!runningThread.isCompleted(nextDispatch)) {
+                    Event threadDone(processes[runningThread.getPId()], runningThread, nextDispatch,
+                                     otherThreads, 4, timeSlice);
+                    priorityEvents.emplace(threadDone);
+                } else {
+                    completedThreads.push_back(runningThread);
+                    Event burstDone(processes[runningThread.getPId()], runningThread, nextDispatch,
+                                    otherThreads, 5, timeSlice);
+                    priorityEvents.emplace(burstDone);
+                    continue;
+                }
+                // End of IO_BURST
+                if (tempBurst.get_io_time() > 0) {
+                    Event ioDone(processes[runningThread.getPId()], runningThread,
+                                 nextDispatch + tempBurst.get_io_time(), otherThreads, 6, timeSlice);
+                    priorityEvents.emplace(ioDone);
+                    blockedThreads.push_back(runningThread);
+                }
+            }
+            else{
+                nextDispatch += timeSlice;
+                Event dispatch(processes[runningThread.getPId()], runningThread, timer, otherThreads, 7, timeSlice);
+                priorityEvents.emplace(dispatch);
+                blockedThreads.push_back(runningThread);
+            }
+        }
+        timer++;
+    }
 }
 
 // PRIORITY //
@@ -376,7 +495,6 @@ void Cpu::processEventsPriority() {
                         readyThreadsNormal.push_back(blockedThreads[i]);
                         break;
                     case 'b':
-                        std::cout << "test";
                         readyThreadsBatch.push_back(blockedThreads[i]);
                         break;
                 }
@@ -415,6 +533,7 @@ void Cpu::processEventsPriority() {
 
             int otherThreads = readyThreadsBatch.size() + readyThreadsInteractive.size() + readyThreadsSystem.size() + readyThreadsNormal.size();
 
+            // Determines if there is a thread or process switch
             if(runningThread.getPId() != oldPid){
                 nextDispatch += processSwitchOverhead;
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, otherThreads, 2, 0);
@@ -512,7 +631,8 @@ void Cpu::processEventsRR() {
             int oldPid = runningThread.getPId();
             runningThread = readyThreads[0];
 
-            if(readyThreads[0].getPId() != oldPid){
+            // Determines if there is a thread or process switch
+            if(runningThread.getPId() != oldPid){
                 nextDispatch += processSwitchOverhead;
                 Event dispatched(processes[runningThread.getPId()], runningThread, nextDispatch, readyThreads.size(), 2, timeSlice);
                 priorityEvents.emplace(dispatched);
